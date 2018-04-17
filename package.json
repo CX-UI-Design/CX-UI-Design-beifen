@@ -17,7 +17,12 @@
     "vue-router": "^3.0.1",
     "element-ui": "^2.1.0",
     "js-cookie": "^2.2.0",
-    "mockjs": "^1.0.1-beta3"
+    "mockjs": "^1.0.1-beta3",
+    "cx-easy-form": "^1.0.1",
+    "highlight.js": "^9.12.0",
+    "screenfull": "^3.3.2",
+    "waves": "^0.1.1",
+    "nprogress": "^0.2.0",
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
