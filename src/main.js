@@ -6,6 +6,7 @@ import router from './router/index'
 import store from './store/index'
 
 import components from './components'
+
 Vue.config.productionTip = false
 
 // Import view related components (UI, animation, attachments, scripts...)
