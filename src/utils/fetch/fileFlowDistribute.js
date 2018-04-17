@@ -1,4 +1,4 @@
-import Utils from '../index'
+import {isXType} from '../index'
 
 /**
  * add new head request
@@ -13,7 +13,7 @@ const NewRequestData = {}
  * @returns {*}
  */
 export function newRequestHead(Old, New = NewRequestData) {
-  if (Utils.isXType('object', Old) && Utils.isXType('object', New)) {
+  if (isXType('object', Old) && isXType('object', New)) {
     for (let key in New) {
       Old[key] = New[key];
     }
