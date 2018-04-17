@@ -9,9 +9,9 @@ import test from './modules/test';
 import getters from './getters';
 
 
-import vue_formercool_Cx from '../lib/index';
+import cx_easy_form from 'cx-easy-form';
 
-let Form = vue_formercool_Cx.store
+let Form = cx_easy_form.store
 
 
 Vue.use(Vuex);
