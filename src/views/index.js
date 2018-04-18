@@ -25,9 +25,10 @@ Vue.use(ElementUI);
 Vue.use(vueWaves);
 Vue.use(Highlight)
 Vue.use(CxEasyForm.body, {
-  stageName: 'gcx',//stage name
+  stageName: 'cx',//stage name
   log: false,//show log information
   formEvent: formEvent,//binding form component interaction method （click / change / blur / fouce ... and so on）
+  mock: true,
   requestHead: {
     'appId': '07d8737811434732',
     "appClientType": "pc",
