@@ -3,7 +3,7 @@
   <!--:text-color="sideStyle.text"-->
   <!--:active-text-color="sideStyle.active"-->
   <!--nav left-->
-  <div class="cx-sidebar fl">
+  <div class="cx-sidebar">
     <div class="logo">
 
     </div>
@@ -81,9 +81,6 @@
     }
     .el-menu {
       border-right: none;
-
     }
   }
-
-
 </style>
