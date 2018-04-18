@@ -5,19 +5,15 @@
 import Cookies from 'js-cookie';
 import Highlight from '../utils/highlight/index'
 /* ---------------- css / less /sass ----------------*/
-require('../assets/css/animate/animate.css');
-import '../assets/css/reset.css'
-import '../assets/css/element-ui/theme-default/index.css'
+import 'cx-theme/dist/cx-theme.min.css'
 import '../assets/css/public.scss'//public css
 import '../utils/svgConfig'//iconfont - config
 //ele cover css
 import '../assets/css/element-ui/theme-cover/base.scss'
 import '../assets/css/element-ui/theme-cover/data.scss'
-
 import '../assets/css/element-ui/theme-cover/navigation.scss'
 import '../assets/css/element-ui/theme-cover/notice.scss'
 import '../assets/css/element-ui/theme-cover/other.scss'
-
 import '../assets/css/element-ui/theme-cover/form.scss'
 
 //bench index style
