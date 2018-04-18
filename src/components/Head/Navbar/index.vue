@@ -1,6 +1,6 @@
 <template>
   <!--header-->
-  <div class="header fr">
+  <div class="header-container">
     <!--top nav-->
     <el-menu class="headNav" mode="horizontal">
       <hamburger class="fl" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
