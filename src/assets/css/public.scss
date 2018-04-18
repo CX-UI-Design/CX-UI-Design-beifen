@@ -32,7 +32,7 @@ $dialog-body-min-height: 350px; //body内容实际部分最小高度
   color: $--color-primary;
 }
 
-body {
+body, html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -90,7 +90,6 @@ div, svg {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 
 /* -------------------------  工作台 整体界面参数  ------------------------- */
 @mixin tit-base-style( $base-size,$base-gap,$color) {
