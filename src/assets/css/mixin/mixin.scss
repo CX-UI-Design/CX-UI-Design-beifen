@@ -85,3 +85,15 @@
     }
   }
 }
+
+@mixin scrollbarVisible() {
+  &::-webkit-scrollbar-thumb:vertical {
+    visibility: hidden;
+  }
+  &:hover {
+    &::-webkit-scrollbar-thumb:vertical {
+      visibility: visible;
+      transition: all 3s linear;
+    }
+  }
+}
