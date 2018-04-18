@@ -9,34 +9,33 @@
     </cx-tip-block>
     <cx-demo-block :codeCont="codeTest" skin="github-gist">
       <div slot="source">
-        <gcx-auto-form autoFormID="template-auto-form"
-                       request-url="/mock/autoForm/template"
-                       :query="{}"
-                       :cover-data="coverData"
-                       cue-type="only-error"
-                       :isCheck="false"
-                       @afterRequest="afterRequest"
-        ></gcx-auto-form>
+        <cx-auto-form autoFormID="template-auto-form"
+                      request-url="/mock/autoForm/template"
+                      :query="{}"
+                      :cover-data="coverData"
+                      cue-type="only-error"
+                      :isCheck="false"
+                      @afterRequest="afterRequest"
+        ></cx-auto-form>
       </div>
       <div slot="description">
         这是自动表单的案例
       </div>
     </cx-demo-block>
 
-    <attributes-table></attributes-table>
+    <cx-attributes-block title="Attributes" :tableData="tableData" :tableHead="tableHead"></cx-attributes-block>
+
+
 
   </div>
 </template>
 <script>
   import {code} from './test'
   import pickerOptionsMap from '../../static-data/form/picker-options'
-  import attributesTable from '../../components/Attributes-table/index.vue'
 
   export default {
     name: 'autoForm-index',
-    components: {
-      attributesTable
-    },
+    components: {},
     data() {
       return {
         codeTest: code.test.html,
@@ -61,10 +60,34 @@
           },
           tableHead: {mainHouseList: 'autoFormTest'},
         },
+        tableData: [
+          {
+            date: '2016-05-02',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1518 弄'
+          }, {
+            date: '2016-05-04',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1517 弄'
+          }, {
+            date: '2016-05-01',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1519 弄'
+          }, {
+            date: '2016-05-03',
+            name: '王小虎',
+            address: '上海市普陀区金沙江路 1516 弄'
+          }
+        ],
+        tableHead: [
+          {label: '日期', key: 'date', width: '180px'},
+          {label: '姓名', key: 'name', width: '280px'},
+          {label: '地址', key: 'address', width: '280px'}
+        ],
       }
     },
     created() {
-      this.$CX.formController.set(this, 'template-auto-form', {
+      this.$CX.autoForm.formController.set(this, 'template-auto-form', {
         show: true,
         headers: {
           funcId: 'funcId', //funcId
