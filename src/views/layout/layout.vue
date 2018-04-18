@@ -1,12 +1,16 @@
 <template>
   <div id="layout" :class="['app-wrapper clr',{hideSidebar:!sidebar.opened}]">
-    <!--nav left-->
-    <sidebar></sidebar>
-    <!--header-->
-    <div class="main-container">
+    <div class="header">
       <navbar></navbar>
-      <!-- content -->
-      <app-main></app-main>
+    </div>
+    <!--header-->
+    <div class="main">
+      <div class="main-container">
+        <!--nav left-->
+        <sidebar></sidebar>
+        <!-- content -->
+        <app-main></app-main>
+      </div>
     </div>
   </div>
 </template>
@@ -33,6 +37,7 @@
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "../../assets/css/mixin/mixin.scss";
   @import "../../assets/css/modules/cont";
+
   #layout.app-wrapper {
     @include clearfix;
     &.hideSidebar {
