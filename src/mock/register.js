@@ -9,6 +9,9 @@ import loginAPI from './user/login'
 import roleSideBar from './role/role-side-bar/index'//侧边栏
 // import roleButtonList from './role/role-button-list/index'//按钮权限列表
 
+import templateAutoForm from './Form/template-auto-form'//侧边栏
+
+
 import cx_easy_form from 'cx-easy-form';
 
 let easyFormMock = cx_easy_form.mock
@@ -21,6 +24,11 @@ const registerList = [
   /* ============ role ============ */
   //role - Sidebar
   {url: /\/system\/permission\/list-menu/, method: 'post', target: roleSideBar.sidebar, remarks: 'get role sidebar data'},
+
+  //template-auto-form
+  {url: /\/mock\/autoForm\/template/, method: 'get', target: templateAutoForm.autoform, remarks: 'template-auto-form'},
+
+
   //role - button-list
   // {url: /\/system\/permission\/list-button/, method: 'post', target: roleButtonList.buttonList, remarks: 'get role button list for every web(获取按钮权限列表)'},
   ...easyFormMock
