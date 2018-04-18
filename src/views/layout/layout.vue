@@ -12,6 +12,8 @@
         <app-main></app-main>
       </div>
     </div>
+    <!--go top-->
+    <cx-back-to-top tooltip-tit="回到顶部" action-node="main" transitionName="fade" :visibilityHeight="600" :backPosition="0"></cx-back-to-top>
   </div>
 </template>
 
