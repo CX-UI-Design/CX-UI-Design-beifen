@@ -1,6 +1,7 @@
 @import "../../public.scss";
 @import "../../mixin/mixin";
 
+$page-width: 1140px;
 //左侧导航栏宽度
 $sideWidth: 200px;
 //顶部导航高度
@@ -35,33 +36,25 @@ $win_pb: 10px;
 $win_pl: 10px;
 $win_pr: 10px;
 
-$header_back: rgba(255, 255, 255, 0.98);
-
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
-}
+$header_back: rgba(255, 255, 255, 0.98); //头部背景色
+$main-top: $navH+$navH_pt+$navH_pb; //内容部分 margin-top
+$main-height: calc(100vh - #{$main-top}); //内容部分 高度
 
 /*布局*/
 #layout.app-wrapper {
-  width: 1140px;
-  margin: 0 auto;
-  /* ------------ 左侧导航栏模块 ------------*/
-  .cx-sidebar {
-    min-height: 100vh;
-    .cx-sidebar__container:not(.el-menu--collapse) {
-      width: $sideWidth;
-    }
-  }
-  /* ------------ 内容 模块 ------------ */
-  .main-container {
-    z-index: 1;
+  overflow-y: hidden;
+  /* ------------  顶部模块 ------------  */
+  .header {
+    position: fixed;
     overflow: hidden;
-    /* ------------  顶部模块 ------------  */
-    .header {
-      position: relative;
-      width: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+    background-color: $header_back;
+    .header-container {
+      width: $page-width;
+      margin: 0 auto;
       /*顶部 内容 部分*/
       .headNav {
         height: $navH;
@@ -71,7 +64,6 @@ $header_back: rgba(255, 255, 255, 0.98);
         .avatar-container {
           display: inline-block;
           height: 100%;
-          line-height: $navH;
           padding-right: $navH_pr;
           cursor: pointer;
           .avatar-wrapper {
@@ -104,28 +96,46 @@ $header_back: rgba(255, 255, 255, 0.98);
         }
       }
     }
-    /* ------------  右侧内容模块整体（固定不变，占位） ------------ */
-    .app-main {
-      height: calc(100vh - (#{$navH} + #{$navH_pt} + #{$navH_pb}));
-      padding: $win_gapT $win_gapR $win_gapB $win_gapL;
-      @include box-sizing();
-      overflow: auto;
-      .win {
-        width: 100%;
-        min-height: 100%;
-        padding: $win_pt $win_pr $win_pb $win_pl;
-        @include box-sizing();
+  }
+  /* ------------ 内容 模块 ------------ */
+  .main {
+    width: 100%;
+    height: $main-height;
+    margin-top: $main-top;
+    overflow: auto;
+    @include scrollbarVisible;
+    .main-container {
+      width: $page-width;
+      min-height: $main-height;
+      margin: 0 auto;
+      z-index: 1;
+      /* ------------ 左侧导航栏模块 ------------*/
+      .cx-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        margin-top: $main-top;
+        overflow: auto;
+        @include scrollbarVisible;
+        .cx-sidebar__container:not(.el-menu--collapse) {
+          width: $sideWidth;
+        }
       }
-      //dashboard 主页 布局
-      #dashboard.win {
-        min-height: calc(100vh - #{$navH});
-        padding: 0;
-        .wm {
-          min-height: calc(100vh - #{$navH});
-          overflow: hidden;
+      /* ------------  右侧内容模块整体（固定不变，占位） ------------ */
+      .app-main {
+        min-height: inherit;
+        padding: $win_gapT $win_gapR $win_gapB $win_gapL;
+        margin-left: $sideWidth;
+        @include box-sizing();
+        .win {
+          width: 100%;
+          min-height: 100%;
+          padding: $win_pt $win_pr $win_pb $win_pl;
+          @include box-sizing();
         }
       }
     }
   }
+
 }
 
