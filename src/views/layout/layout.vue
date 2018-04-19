@@ -7,7 +7,7 @@
     <div class="main">
       <div class="main-container">
         <!--nav left-->
-        <sidebar></sidebar>
+        <sidebar isAllOpened default-active="/autoForm/index"></sidebar>
         <!-- content -->
         <app-main></app-main>
       </div>
