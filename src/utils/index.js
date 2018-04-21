@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js'
+
 export const dynamicLoading = {
   css: function (path) {
     if (!path || path.length === 0) {

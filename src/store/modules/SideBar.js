@@ -5,6 +5,7 @@ const sideBar = {
     sidebar: {
       opened: !+Cookies.get('sidebarStatus'),
       loadStatus: false,
+      routersParallelList: [],
     }
   },
   mutations: {
@@ -19,7 +20,10 @@ const sideBar = {
     },
     LOAD_STATUS: state => {
       state.sidebar.loadStatus = true;
-    }
+    },
+    ROUTERSPARALLELLIST: (state, data) => {
+      state.sidebar.routersParallelList = data;
+    },
   },
   actions: {
     ToggleSideBar: ({commit}) => {
@@ -28,6 +32,10 @@ const sideBar = {
     LoadStatus: ({commit}) => {
       commit('LOAD_STATUS')
     },
+    RoutersParallelList: ({commit}, data) => {
+      commit('ROUTERSPARALLELLIST', data)
+    },
   }
+
 };
 export default sideBar;

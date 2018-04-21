@@ -34,7 +34,7 @@
     height: auto;
     pre {
       code.hljs {
-        line-height: 1.4;
+        line-height: 1.8;
         font-family: Menlo, Monaco, Consolas, Courier, monospace;
         font-size: 12px;
         padding: 18px 24px;

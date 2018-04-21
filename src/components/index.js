@@ -20,6 +20,8 @@ import iconSvg from '../components/Icon/icon-svg.vue';                  //返回
 
 import BackToTop from '../components/BackToTop/index.vue';             //返回顶部
 
+import FooterNav from '../components/Footer-nav/footer-nav.vue';       //底部链接导航
+
 
 const components = [
   Code,
@@ -35,7 +37,8 @@ const components = [
   AttributesBlock,
 
   iconSvg,
-  BackToTop
+  BackToTop,
+  FooterNav,
 ]
 
 //binding component

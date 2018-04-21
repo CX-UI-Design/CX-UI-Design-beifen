@@ -1,7 +1,7 @@
 <template>
   <div class="cx-attributes-block">
     <cx-sub-title>{{title}}</cx-sub-title>
-    <cx-attributes-table :tableData="tableData" :tableHead="tableHead"></cx-attributes-table>
+    <cx-attributes-table :type="type" :tableData="tableData" :tableHead="tableHead"></cx-attributes-table>
   </div>
 </template>
 <script>
@@ -9,6 +9,7 @@
     name: 'cx-attributes-block',
     props: {
       title: {type: String},
+      type: {type: String},
       tableHead: {type: Array},
       tableData: {type: Array},
     },

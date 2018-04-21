@@ -1,10 +1,10 @@
 <template>
-  <div class="cx-demo__block" :style="{'margin':gap}">
+  <div class="cx-demo__block" :id="codeID" :style="{'margin':gap}">
     <div class="cx-demo__source">
       <slot name="source"></slot>
     </div>
-    <div class="cx-demo__meta" style="max-height: 0px">
-      <div class="cx-demo__description">
+    <div class="cx-demo__meta" :id="codeID+'__meta'" style="max-height: 0px">
+      <div class="cx-demo__description" :id="codeID+'__description'">
         <slot name="description"></slot>
       </div>
       <cx-code :codeCont="codeCont" skin="github-gist"></cx-code>
@@ -19,13 +19,19 @@
   export default {
     name: 'cx-demo-block',
     props: {
-      codeCont: {type: String},
-      skin: {type: String},
+      codeCont: {type: String},//code content
+      skin: {type: String},//code skin
       gap: {type: String},
+      codeID: {
+        type: String, default: function () {
+          return Math.random().toString(36).substr(2);
+        }
+      },//code block ID
     },
     data() {
       return {
         metaDom: null,
+        description: null,
         control: {
           text: "显示代码",
           icon: 'el-icon-caret-bottom'
@@ -34,11 +40,14 @@
     },
     watch: {},
     created() {
-
     },
     mounted() {
       this.judgeBlockShow(['cx-demo__source', 'cx-demo__description']);
-      this.metaDom = document.getElementsByClassName('cx-demo__meta');
+      this.metaDom = document.getElementById(this.codeID + '__meta');
+      this.description = document.getElementById(this.codeID + '__description');
+      if (!this.description.innerHTML) {
+        this.description.style.display = 'none';
+      }
     },
     methods: {
       /**
@@ -55,14 +64,13 @@
           }
         })
       },
-
       /**
        * control click handle
        * @param dom
        */
       controlClick(dom) {
-        const h = dom[0].style.maxHeight;
-        dom[0].style.maxHeight = h === '0px' ? '5000px' : '0px';
+        const h = dom.style.maxHeight;
+        dom.style.maxHeight = h === '0px' ? '5000px' : '0px';
         this.control = h === '0px' ? {
           text: "隐藏代码",
           icon: 'el-icon-caret-top'

@@ -9,7 +9,7 @@
         <!--nav left-->
         <sidebar isAllOpened default-active="/autoForm/index"></sidebar>
         <!-- content -->
-        <app-main></app-main>
+        <app-main v-if="sidebar.loadStatus"></app-main>
       </div>
     </div>
     <!--go top-->
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+  import {mapGetters} from 'vuex';
   import Sidebar from '../../components/Sidebar/index.vue';
   import Navbar from '../../components/Head/Navbar/index.vue';
   import AppMain from './app-main.vue';
@@ -30,9 +31,9 @@
       AppMain
     },
     computed: {
-      sidebar() {
-        return this.$store.state.sideBar.sidebar;
-      }
+      ...mapGetters([
+        'sidebar',
+      ]),
     }
   }
 </script>

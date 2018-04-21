@@ -20,13 +20,13 @@
       <div v-for="(firstlist,index) in navList">
         <!--single menu-->
         <el-menu-item :index="firstlist.path" v-if="firstlist.level === 1">
-          <cx-icon-svg :icon-class="firstlist.icon"></cx-icon-svg>
+          <cx-icon-svg :icon-class="firstlist.icon" v-if="firstlist.icon"></cx-icon-svg>
           <span slot="title">&nbsp;{{firstlist.groupName }}</span>
         </el-menu-item>
         <!--second menu-->
         <el-submenu :key="firstlist.firstIndex" :index="firstlist.firstIndex" v-if="firstlist.level !== 1">
           <template slot="title">
-            <cx-icon-svg :icon-class="firstlist.icon"></cx-icon-svg>
+            <cx-icon-svg :icon-class="firstlist.icon" v-if="firstlist.icon"></cx-icon-svg>
             <span slot="title">&nbsp;{{firstlist.groupName }}</span>
           </template>
           <el-menu-item v-for="(secondlist,index) in firstlist.children" :index="secondlist.path"
@@ -36,7 +36,7 @@
           <!--third menu group -->
           <el-menu-item-group v-for="(secondlist,index) in firstlist.children"
                               :index="secondlist.path" :key="firstlist.firstIndex+'-'+secondlist.secondIndex"
-                              :title="secondlist.groupName" v-if="firstlist.level === 3">
+                              :title=" secondlist.groupName" v-if="firstlist.level === 3">
             <el-menu-item v-for="(thirdlist,index) in secondlist.children"
                           :index="thirdlist.path" :key="firstlist.firstIndex+'-'+secondlist.secondIndex+'-'+thirdlist.thirdIndex">
               {{thirdlist.groupName }}
@@ -52,6 +52,7 @@
 <script>
   import {sideBar} from '../../api/role/role-side-bar'
   import {mapGetters} from 'vuex';
+  import {judgeType} from '../../utils/index';
 
   export default {
     name: 'cx-sidebar',
@@ -82,10 +83,43 @@
         .then(response => {
           this.navList = response.resultData;
           this.getDefaultOpeneds(this.navList);//get default-openeds
+          this.getRoutersParallelList(this.navList);//get routers parallel list
           this.$store.dispatch('LoadStatus');
         })
     },
     methods: {
+      /**
+       * get routers parallel list (路由平行排列信息队列)
+       * @returns {Array}
+       */
+      getRoutersParallelList(list) {
+        let pathList = [];
+        list.forEach((item) => {
+          (function loopSearch(item) {
+            let status = true;
+            let obj = item;
+            while (status) {
+              status = obj.hasOwnProperty('children');
+              const isArray = judgeType(obj) === 'array';
+              if (!status) {
+                if (isArray) {
+                  obj.forEach(j => {
+                    loopSearch(j)
+                  })
+                }
+                else {
+                  pathList.push(obj);
+                }
+                status = false;
+              }
+              else {
+                obj = obj.children
+              }
+            }
+          })(item);
+        });
+        this.$store.dispatch('RoutersParallelList', pathList);
+      },
       /**
        * get default-openeds
        * @param list
@@ -110,9 +144,11 @@
   @import "../../assets/css/public";
 
   @mixin main-tit {
+    display: block;
     font-size: 16px;
     font-weight: 700;
     color: #333;
+    text-align: left;
     transition: .15s ease-out;
   }
 
@@ -132,6 +168,7 @@
     .el-menu.cx-sidebar__container {
       border-right: none;
       li.el-menu-item {
+        padding-left: 0 !important;
         span {
           @include main-tit;
         }
@@ -139,10 +176,13 @@
       }
       li.el-submenu {
         .el-menu-item {
+          font-size: 13px;
           color: #444;
+          padding-left: 6px !important;
           @include magic-change;
         }
         .el-submenu__title {
+          padding-left: 0 !important;
           span {
             @include main-tit;
           }
@@ -158,6 +198,9 @@
             }
           }
         }
+      }
+      .el-menu-item-group__title {
+        padding-left: 6px !important;
       }
     }
   }

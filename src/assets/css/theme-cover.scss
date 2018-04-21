@@ -160,7 +160,6 @@
   border-right: 0px;
 }
 
-
 //==========================form================================
 /*radio*/
 .el-radio__input.is-checked .el-radio__inner::after {
@@ -237,10 +236,10 @@
 }
 
 .el-checkbox-button.is-checked .el-checkbox-button__inner {
-  color: $--color-text-regular !important;
-  border-color: $--color-primary !important;
+  color: $--color-text-regular;
+  border-color: $--color-primary!important;
   box-shadow: none !important;
-  background-color: transparent !important;
+  background-color: transparent;
   background: url(../img/other/chioce.png) right bottom no-repeat;
 }
 
@@ -387,6 +386,7 @@
     padding: 22px 42px;
   }
 }
+
 //dialog
 .ns-dialog {
   &.ns-dialog-col1 {

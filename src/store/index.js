@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import user from './modules/user';
 import tabView from './modules/tabView';
-import sideBar from './modules/sideBar';
+import SideBar from './modules/SideBar';
 import test from './modules/test';
 
 
@@ -19,7 +19,7 @@ const store = new Vuex.Store({
   modules: {
     Form,
     tabView,
-    sideBar,
+    SideBar,
     user,
     test
   },

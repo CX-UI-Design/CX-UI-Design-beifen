@@ -16,7 +16,7 @@
       }
     },
     created(){
-      console.log(45454545454545)
+
     },
     methods: {
       closeViewTabs(view, $event) {

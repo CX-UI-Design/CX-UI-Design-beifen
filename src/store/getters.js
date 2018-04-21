@@ -15,7 +15,7 @@ const getters = {
 
 
   //侧边栏
-  sidebar: state => state.sideBar.sidebar,
+  sidebar: state => state.SideBar.sidebar,
   //历史访问模块
   visitedViews: state => state.tabView.visitedViews,
 };

@@ -1,9 +1,9 @@
-const sideBarData = {
+export const sideBarData = {
   main: [
     //更新日志
     {
       "groupName": "更新日志",
-      "icon": "shezhi-",
+      "icon": "",
       "firstIndex": "1",
       "path": "/home/dashboard",
       "level": 1,
@@ -11,7 +11,7 @@ const sideBarData = {
     //开发指南
     {
       "groupName": "开发指南",
-      "icon": "shezhi-",
+      "icon": "",
       "firstIndex": "2",
       "level": 2,
       "children": [
@@ -38,7 +38,7 @@ const sideBarData = {
     //总览
     {
       "groupName": "总览",
-      "icon": "shezhi-",
+      "icon": "",
       "firstIndex": "3",
       "level": 2,
       "children": [
@@ -59,7 +59,7 @@ const sideBarData = {
     //组件
     {
       "groupName": "组件",
-      "icon": "shezhi-",
+      "icon": "",
       "firstIndex": "4",
       "level": 3,
       "children": [
@@ -68,48 +68,93 @@ const sideBarData = {
           "groupName": "Basic",
           "icon": "",
           "secondIndex": "1",
-          "path": "/home/dashboard",
+          "path": "/components/basic",
           "children": [
-            {
-              "groupName": "图标",
-              "icon": "",
-              "thirdIndex": "1",
-              "path": "/home/dashboard",
-            },
-            {
-              "groupName": "按钮",
-              "icon": "",
-              "thirdIndex": "2",
-              "path": "/home/dashboard"
-            },
+            {"groupName": "图标", "thirdIndex": "1", "path": "/components/basic/icon", "icon": ""},
+            {"groupName": "按钮", "thirdIndex": "2", "path": "/components/basic/button", "icon": ""},
           ]
         },
         //normal
         {
           "groupName": "normal",
           "secondIndex": "2",
-          "path": "/home/dashboard",
+          "path": "/components/normal",
           "children": [
-            {
-              "groupName": "图标",
-              "icon": "",
-              "thirdIndex": "1",
-              "path": "/home/dashboard",
-            },
-            {
-              "groupName": "按钮",
-              "icon": "",
-              "thirdIndex": "2",
-              "path": "/home/dashboard"
-            },
+            {"groupName": "Radio 单选框", "thirdIndex": "1", "path": "/components/normal/radio", "icon": ""},
+            {"groupName": "Checkbox 多选框", "thirdIndex": "2", "path": "/components/normal/checkbox", "icon": "",},
+            {"groupName": "Input 输入框", "thirdIndex": "3", "path": "/components/normal/input", "icon": "",},
+            {"groupName": "Select 选择器", "thirdIndex": "4", "path": "/components/normal/select", "icon": "",},
+            {"groupName": "Cascader 级联选择器", "thirdIndex": "5", "path": "/components/normal/cascader", "icon": "",},
+            {"groupName": "Switch 开关", "thirdIndex": "6", "path": "/components/normal/switch", "icon": "",},
+            {"groupName": "Slider 滑块", "thirdIndex": "7", "path": "/components/normal/slider", "icon": "",},
+            {"groupName": "TimePicker 时间选择器", "thirdIndex": "8", "path": "/components/normal/timePicker", "icon": "",},
+            {"groupName": "DatePicker 日期选择器", "thirdIndex": "9", "path": "/components/normal/datePicker", "icon": "",},
+            {"groupName": "DateTimePicker 日期时间选择器", "thirdIndex": "10", "path": "/components/normal/dateTimePicker", "icon": "",},
+            {"groupName": "Upload 上传", "thirdIndex": "11", "path": "/components/normal/upload", "icon": "",},
+            {"groupName": "Transfer 穿梭框", "thirdIndex": "12", "path": "/components/normal/transfer", "icon": "",},
           ]
-        }
+        },
+        //extra
+        {
+          "groupName": "extra",
+          "secondIndex": "3",
+          "path": "/components/extra",
+          "children": [
+            {"groupName": "Avatar 头像图片", "thirdIndex": "1", "path": "/components/extra/avatar", "icon": ""},
+            {"groupName": "Separator 分割操作线", "thirdIndex": "2", "path": "/components/extra/separator", "icon": ""},
+            {"groupName": "base-table 基础表单", "thirdIndex": "3", "path": "/components/extra/base-table", "icon": ""},
+            {"groupName": "Text 文字标签", "thirdIndex": "4", "path": "/components/extra/text", "icon": ""},
+          ]
+        },
+        //business
+        {
+          "groupName": "business",
+          "secondIndex": "4",
+          "path": "/components/business",
+          "children": [
+            {"groupName": "Role-check-btn 按钮权限", "thirdIndex": "1", "path": "/components/business/role-check-btn", "icon": ""},
+            {"groupName": "Role-manage-range 数据权限范围", "thirdIndex": "2", "path": "/components/business/role-manage-range", "icon": ""},
+            {"groupName": "Role-employee 员工角色", "thirdIndex": "3", "path": "/components/business/role-employee", "icon": ""},
+            {"groupName": "Role-group 角色组操作", "thirdIndex": "4", "path": "/components/business/role-group", "icon": ""},
+            {"groupName": "Role-authorizer 授权人操作", "thirdIndex": "5", "path": "/components/business/role-authorizer", "icon": ""},
+            {"groupName": "Simple-tree 简单树状组件", "thirdIndex": "6", "path": "/components/business/simple-tree", "icon": ""},
+            {"groupName": "Simple-tree-select 下拉内置树状组件", "thirdIndex": "7", "path": "/components/business/simple-tree-select", "icon": ""},
+            {"groupName": "Area-linkage 地域选择", "thirdIndex": "8", "path": "/components/business/area-linkage", "icon": ""},
+            {"groupName": "Customer-info-linkage 选人信息联动", "thirdIndex": "9", "path": "/components/business/customer-info-linkage", "icon": ""},
+            {"groupName": "Customer-info-single 搜索选人", "thirdIndex": "10", "path": "/components/business/customer-info-single", "icon": ""},
+            {"groupName": "Time-interval 时间频率", "thirdIndex": "11", "path": "/components/business/time-interval", "icon": ""},
+          ]
+        },
+        //Other
+        {
+          "groupName": "Other",
+          "icon": "",
+          "secondIndex": "5",
+          "path": "/components/other",
+          "children": [
+            {"groupName": "Dialog 对话框", "thirdIndex": "1", "path": "/components/other/dialog", "icon": ""},
+          ]
+        },
+        //Form
+        {
+          "groupName": "form",
+          "icon": "",
+          "secondIndex": "6",
+          "path": "/components/form",
+          "children": [
+            {"groupName": "自动表单", "thirdIndex": "1", "path": "/home/dashboard", "icon": ""},
+            {"groupName": "动态数据表单", "thirdIndex": "2", "path": "/home/dashboard", "icon": ""},
+            {"groupName": "静态数据表单", "thirdIndex": "3", "path": "/home/dashboard", "icon": ""},
+            {"groupName": "表单数据修改及交互", "thirdIndex": "4", "path": "/home/dashboard", "icon": ""},
+            {"groupName": "表单提交及重置", "thirdIndex": "5", "path": "/home/dashboard", "icon": ""},
+          ]
+        },
       ]
     },
 
     {
       "groupName": "自动表单",
-      "icon": "shezhi-",
+      "icon": "",
       "firstIndex": "5",
       "level": 2,
       "children": [
@@ -144,7 +189,7 @@ export default {
 // //主页
 // {
 //   "groupName": "主页",
-//   "icon": "shezhi-",
+//   "icon": "",
 //   "firstIndex": "1",
 //   "children": [
 //   {
@@ -157,7 +202,7 @@ export default {
 // },
 // {
 //   "groupName": "Basic",
-//   "icon": "shezhi-",
+//   "icon": "",
 //   "firstIndex": "2",
 //   "children": [
 //   {
@@ -176,7 +221,7 @@ export default {
 // },
 // {
 //   "groupName": "Form",
-//   "icon": "shezhi-",
+//   "icon": "",
 //   "firstIndex": "3",
 //   "children": [
 //   {
@@ -231,7 +276,7 @@ export default {
 // },
 // {
 //   "groupName": "Data",
-//   "icon": "shezhi-",
+//   "icon": "",
 //   "firstIndex": "4",
 //   "children": [
 //   {
@@ -250,7 +295,7 @@ export default {
 // },
 // {
 //   "groupName": "Notice",
-//   "icon": "shezhi-",
+//   "icon": "",
 //   "firstIndex": "5",
 //   "children": [
 //   {
@@ -263,7 +308,7 @@ export default {
 // },
 // {
 //   "groupName": "Navigation",
-//   "icon": "shezhi-",
+//   "icon": "",
 //   "firstIndex": "6",
 //   "children": [
 //   {
