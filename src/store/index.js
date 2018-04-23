@@ -8,10 +8,9 @@ import test from './modules/test';
 
 import getters from './getters';
 
+import CxEasyForm from '../../../cx-easy-form/dist/cx-easy-form.min';
 
-import cx_easy_form from 'cx-easy-form';
-
-let Form = cx_easy_form.store
+let Form = CxEasyForm.store;
 
 
 Vue.use(Vuex);
