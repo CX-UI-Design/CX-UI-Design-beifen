@@ -18,6 +18,8 @@
 </template>
 
 <script>
+  import {getNode} from './index'
+
   export default {
     name: 'cx-back-to-top',
     props: {
@@ -50,7 +52,7 @@
       }
     },
     mounted() {
-      this.node = this.getNode('main');//get node
+      this.node = getNode('main');//get node
       this.node.addEventListener('scroll', this.handleScroll);
     },
     beforeDestroy() {
@@ -60,25 +62,6 @@
       }
     },
     methods: {
-      /**
-       * get node
-       * @param node
-       * @returns {*}
-       */
-      getNode(node) {
-        if (typeof node !== 'string' || !node) return window;
-        if (node === 'body') {
-          return document.body;
-        }
-        else if (node === 'window') {
-          return window;
-        }
-        else {
-          const nid = document.getElementById(node);//node by ID
-          const nclass = document.getElementsByClassName(node)[0];//node by className
-          return nid ? nid : nclass ? nclass : window;
-        }
-      },
       handleScroll() {
         this.visible = this.node.scrollTop > this.visibilityHeight;
       },
