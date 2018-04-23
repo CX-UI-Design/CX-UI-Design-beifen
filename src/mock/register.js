@@ -12,9 +12,9 @@ import roleSideBar from './role/role-side-bar/index'//侧边栏
 import templateAutoForm from './Form/template-auto-form'//侧边栏
 
 
-import cx_easy_form from 'cx-easy-form';
+import CxEasyForm from '../../../cx-easy-form/dist/cx-easy-form.min';
 
-let easyFormMock = cx_easy_form.mock
+let easyFormMock = CxEasyForm.mock
 
 
 //data register list
