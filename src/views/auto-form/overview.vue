@@ -1,20 +1,23 @@
 <template>
-
-  <cx-checkbox v-model="checkboxModel" :items="checkboxItem"  type="button"></cx-checkbox>
+  <div>
+    <cx-input v-model="inputModel1" placeholder="请输入内容" :width="200" customIcon="fangchan"></cx-input>
+    <cx-input v-model="inputModel2" placeholder="请输入内容" :width="200" customIcon="baobiao" @iconClick="iconClick(inputModel2)"></cx-input>
+  </div>
 </template>
 
 <script>
   export default {
     data() {
       return {
-        checkboxModel: ['item1'],
-        checkboxItem: [
-          {label: '选项一', value: 'item1', disabled: false},
-          {label: '选项二', value: 'item2', disabled: false},
-          {label: '选项三', value: 'item3', disabled: false}
-        ],
+        inputModel1: '',
+        inputModel2: '点击图标事件'
       }
     },
+    methods: {
+      iconClick(value) {
+        alert('this is input icon click, value is :' + value)
+      }
+    }
   }
 </script>
 <style rel="stylesheet/scss" lang="scss">
