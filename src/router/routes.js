@@ -3,6 +3,7 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
+import {getNode} from "../components/BackToTop/index";
 
 Vue.use(Router)
 
@@ -82,7 +83,7 @@ export const constantRouterMap = [
         children: [
           {path: 'radio', component: _import('components/normal/radio/radio'), meta: {requireAuth: true}, name: '单选框'},
           {path: 'checkbox', component: _import('components/normal/checkbox/checkbox'), meta: {requireAuth: true}, name: '多选框'},
-          {path: 'input', component: _import('components/normal/input'), meta: {requireAuth: true}, name: '输入框'},
+          {path: 'input', component: _import('components/normal/input/input'), meta: {requireAuth: true}, name: '输入框'},
           {path: 'select', component: _import('components/normal/select'), meta: {requireAuth: true}, name: '选择器'},
           {path: 'cascader', component: _import('components/normal/cascader'), meta: {requireAuth: true}, name: '级联选择器'},
           {path: 'switch', component: _import('components/normal/switch'), meta: {requireAuth: true}, name: '开关'},
@@ -161,7 +162,14 @@ export const constantRouterMap = [
 
 export default new Router({
   mode: 'history',
-  scrollBehavior: () => ({y: 0}),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      getNode('main').scrollTo(0, 0);
+      return {x: 0, y: 0}
+    }
+  },
   routes: constantRouterMap
 })
 
