@@ -1,25 +1,34 @@
 <template>
-  <div>
-    <cx-input v-model="inputModel1" placeholder="请输入内容" :width="200" customIcon="fangchan"></cx-input>
-    <cx-input v-model="inputModel2" placeholder="请输入内容" :width="200" customIcon="baobiao" @iconClick="iconClick(inputModel2)"></cx-input>
-  </div>
+  <cx-auto-form autoFormID="dynamicFormTemplate"
+                request-url="/mock/autoForm/template"
+                :query="{}"
+                :cover-data="coverData"
+                cue-type="only-error"
+  ></cx-auto-form>
 </template>
 
 <script>
+  import pickerOptionsMap from '../../static-data/form/picker-options';//引入本地时间日期控件的修改配置
+
   export default {
     data() {
       return {
-        inputModel1: '',
-        inputModel2: '点击图标事件'
+        coverData: {
+          pickerOptions: {
+            birthday: pickerOptionsMap['date-point'].birthday,
+          },
+        },
       }
     },
-    methods: {
-      iconClick(value) {
-        alert('this is input icon click, value is :' + value)
-      }
-    }
+    created() {
+      //注册渲染表单
+      this.$CX.autoForm.formController.set(this, 'localFormTemplate', {
+        show: true,
+      });
+    },
   }
 </script>
+
 <style rel="stylesheet/scss" lang="scss">
 
 </style>
