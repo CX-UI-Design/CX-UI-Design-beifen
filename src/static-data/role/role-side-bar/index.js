@@ -265,9 +265,9 @@ export default {
           "syOrderindex": "15"
         },
         {
-          "funcId": 'dynamic-Select',
+          "funcId": 'dynamicAndLocal-Select',
           "menuMenuname": "动态-Select",
-          "menuMenusubname": "form/select-dynamic",
+          "menuMenusubname": "form/select-dynamicAndLocal",
           "menuIconcls": null,
           "syOrderindex": "16"
         }
