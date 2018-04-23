@@ -81,9 +81,8 @@
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
   .cx-footer-nav {
+    position: absolute;
     overflow: hidden;
-    background: skyblue;
-    padding: 40px 0 140px;
     color: #333;
     font-size: 14px;
     .footer-nav-left {
