@@ -36,6 +36,5 @@ const sideBar = {
       commit('ROUTERSPARALLELLIST', data)
     },
   }
-
 };
 export default sideBar;
