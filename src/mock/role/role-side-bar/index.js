@@ -142,11 +142,9 @@ export const sideBarData = {
           "secondIndex": "6",
           "path": "/components/form",
           "children": [
-            {"groupName": "自动表单", "thirdIndex": "1", "path": "/home/dashboard", "icon": ""},
-            {"groupName": "动态数据表单", "thirdIndex": "2", "path": "/home/dashboard", "icon": ""},
-            {"groupName": "静态数据表单", "thirdIndex": "3", "path": "/home/dashboard", "icon": ""},
-            {"groupName": "表单数据修改及交互", "thirdIndex": "4", "path": "/home/dashboard", "icon": ""},
-            {"groupName": "表单提交及重置", "thirdIndex": "5", "path": "/home/dashboard", "icon": ""},
+            {"groupName": "动/静态数据表单", "thirdIndex": "1", "path": "/components/form/dynamicAndLocal", "icon": ""},
+            {"groupName": "修改与交互", "thirdIndex": "2", "path": "/components/form/modifyAndInteracting", "icon": ""},
+            {"groupName": "提交与重置", "thirdIndex": "3", "path": "/components/form/submitAndReset", "icon": ""},
           ]
         },
       ]
