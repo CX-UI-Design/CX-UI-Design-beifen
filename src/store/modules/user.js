@@ -2,6 +2,7 @@
 import Cookies from 'js-cookie';
 import CryptoJS from 'crypto-js'
 import {Cookie, crypto} from "../../utils/index";
+
 import sw from '@/switch'
 
 
@@ -45,7 +46,7 @@ const user = {
     }
   },
   mutations: {
-    //login and set/store - token info  ( 鐧诲綍/璁剧疆瀛樺偍token淇℃伅 锛�
+    //login and set/store - token info
     LOGIN: (state, data) => {
       Cookie.set('token', data.token, lifetime);
       //user information by login
@@ -63,7 +64,7 @@ const user = {
         avatar: _avatar_mock(data.avatar)
       }, cookieKey, lifetime);
     },
-    //login-out 鐧诲嚭
+    //login-out
     LOGOUT: () => {
       Cookie.delete('token');
       Cookie.delete(cookieName);
