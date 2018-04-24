@@ -1,6 +1,6 @@
 <template>
   <div class="cx-code__block" v-highlight>
-     <pre><code class="hljs language-html" v-text="codeCont">
+     <pre><code :class="['hljs language-html',{'transparent':transparent}]" v-text="codeCont">
      </code></pre>
   </div>
 </template>
@@ -10,6 +10,7 @@
     props: {
       codeCont: {type: String},
       skin: {type: String},
+      transparent: {type: Boolean, default: false},
     },
     data() {
       return {}
@@ -41,6 +42,10 @@
         background-color: #fafafa;
         border: 1px solid #eaeefb;
         border-radius: 4px;
+        &.transparent {
+          background-color: transparent;
+          border: none;
+        }
       }
     }
   }
