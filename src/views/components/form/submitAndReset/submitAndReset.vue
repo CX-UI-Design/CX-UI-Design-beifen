@@ -1,100 +1,117 @@
 <template>
   <div class="win autoForm-index">
-    <cx-main-title>Input 输入框</cx-main-title>
-    <cx-describe-text>通过鼠标或键盘输入字符</cx-describe-text>
-    <!--normal template-->
-    <cx-sub-title>基础用法</cx-sub-title>
-    <cx-demo-block :codeCont="templeCode.normal" skin="github-gist">
+    <cx-main-title>表单的提交与重置</cx-main-title>
+    <cx-describe-text>静态数据获取/动态数据获取 渲染表单</cx-describe-text>
+    <!--local template-->
+    <cx-sub-title>提交与重置示例</cx-sub-title>
+    <cx-demo-block :codeCont="templeCode.main" skin="github-gist">
       <div slot="source">
-        <cx-input v-model="inputInfo1" placeholder="请输入内容" :width="200" height="32px"></cx-input>
-      </div>
-      <div slot="description">
-        通过 width / height 属性指定宽高，注意宽高属性值可以为数字（32），也可以为字符串（32px）
-      </div>
-    </cx-demo-block>
-    <!--disabled template-->
-    <cx-sub-title>禁用状态</cx-sub-title>
-    <cx-demo-block :codeCont="templeCode.disabled" skin="github-gist">
-      <div slot="source">
-        <cx-input v-model="inputInfo2" placeholder="请输入内容" :width="200" :height="32" disabled></cx-input>
-      </div>
-      <div slot="description">
-        通过 disabled 属性指定是否禁用 input 组件
-      </div>
-    </cx-demo-block>
-    <!--disabled template-->
-    <cx-sub-title>只读状态</cx-sub-title>
-    <cx-demo-block :codeCont="templeCode.readonly" skin="github-gist">
-      <div slot="source">
-        <cx-input v-model="inputInfo3" placeholder="请输入内容" :width="200" readonly></cx-input>
-      </div>
-      <div slot="description">
-        通过 readonly 属性决定 input 组件是否只读
-      </div>
-    </cx-demo-block>
-    <!--indeterminate template-->
-    <cx-sub-title>文本域</cx-sub-title>
-    <cx-describe-text>用于输入多行文本信息，通过将 type 属性的值指定为 textarea。</cx-describe-text>
-    <cx-demo-block :codeCont="templeCode.type" skin="github-gist">
-      <div slot="source">
-        <cx-input v-model="inputInfo4" placeholder="请输入内容" type="textarea" :width="600" :height="64" style="margin-bottom: 30px"></cx-input>
-        <cx-input v-model="inputInfo5" placeholder="请输入内容" type="textarea" :width="600" :rows="5" :minlength="10" :maxlength="20"></cx-input>
-      </div>
-      <div slot="description">
-        通过设置 minlength 和 maxlength 属性来设置最大最小输入长度,可以通过设置 rows 或者 height 来控制 文本域的输入高度
-      </div>
-    </cx-demo-block>
-    <!--type template-->
-    <cx-sub-title>带 icon 的输入框</cx-sub-title>
-    <cx-describe-text>带有图标标记输入类型。</cx-describe-text>
-    <cx-demo-block :codeCont="templeCode.type" skin="github-gist">
-      <div slot="source">
-        <cx-input v-model="inputInfo6" placeholder="请输入内容" :width="200" customIcon="fangchan"></cx-input>
-        <cx-input v-model="inputInfo7" placeholder="请输入内容" :width="200" customIcon="baobiao" @iconClick="iconClick(inputInfo7)"></cx-input>
-      </div>
-      <div slot="description">
-        通过设置 iconClick 属性来设置输入框图标的点击事件
-      </div>
-    </cx-demo-block>
-    <!--Attributes table-->
-    <cx-attributes-block type="attributes" title="Checkbox Attributes" :tableData="attributesData"></cx-attributes-block>
-    <!--Events table-->
-    <cx-attributes-block type="events" title="Checkbox Events" :tableData="eventsData"></cx-attributes-block>
+        <cx-auto-form autoFormID="dynamicFormTemplate"
+                      request-url="/mock/autoForm/template"
+                      :query="{}"
+                      :cover-data="coverData"
+                      cue-type="only-error"
+                      @afterRequest="afterRequest"
+        ></cx-auto-form>
+        <!--button handle-->
+        <cx-auto-form-operation type="form" :buttonInfo="buttonInfo" autoFormID="dynamicFormTemplate" style="text-align: center;margin-top: 30px"></cx-auto-form-operation>
+        <!--Attributes table-->
+        <cx-attributes-block type="submitResault" title="提交结果" :tableData="formSubmitData"></cx-attributes-block>
 
+      </div>
+      <div slot="description">
+        使用组件表单操作模块组件：cx-auto-form-operation 来快速构建操作模块界面。其中，需要设置按钮信息 buttonInfo 属性，传入一个数组信息，
+        且注意 autoFormID 属性值是否和表单 autoFormID 属性值一致
+      </div>
+    </cx-demo-block>
   </div>
 </template>
 <script>
-  import {code, dataInfo, attributes, events} from './content-config'
+  import {dynamicAndLocal} from '../../../../mock/Form/template-auto-form'
+  import pickerOptionsMap from '../../../../static-data/form/picker-options'
+
+  import {code} from './content-config'
 
   export default {
-    name: 'checkbox-view',
+    name: 'dynamicAndLocal-view',
     components: {},
     data() {
       return {
         templeCode: code,
-        inputInfo1: dataInfo.inputModel1,
-        inputInfo2: dataInfo.inputModel2,
-        inputInfo3: dataInfo.inputModel3,
-        inputInfo4: dataInfo.inputModel4,
-        inputInfo5: dataInfo.inputModel5,
-        inputInfo6: dataInfo.inputModel6,
-        inputInfo7: dataInfo.inputModel7,
-        attributesData: attributes,
-        eventsData: events,
+        submitUrl: '/mock/autoForm/submit',
+        //表单按钮信息
+        buttonInfo: [
+          {name: '确定', style: 'primary', event: this.autoFormSubmit},
+          {name: '取消', style: '', event: this.autoFormCancel},
+        ],
+        coverData: {
+          pickerOptions: {
+            birthday: pickerOptionsMap['date-point'].birthday,
+          },
+        },
+
+        formSubmitData: [],
       }
     },
     created() {
-
+      const a = this.$store.state.roleButton.roleButtonList;
+      console.log(a);
+      this.$CX.autoForm.formController.set(this, 'dynamicFormTemplate', {
+        show: true,
+      });
     },
     methods: {
-      iconClick(value) {
-        alert('this is input icon click, value is :' + value)
-      }
+      //自动表单请求获取数据 之后 操作
+      afterRequest(vm, data) {
+        //..............................  逻辑代码书写
+        console.log('afterRequest');
+        console.log(data.modelData);
+
+      },
+      /**
+       * auto-form submit  ( 提交按钮事件操作 )
+       * @param vm
+       * @param formName       button-info
+       */
+      autoFormSubmit(vm, formName) {
+        this.formSubmitData = [];
+        this.$CX.autoForm.validate(vm, formName).then(
+          params => {
+            //..............................  逻辑代码书写 ①
+            const query = params.formData.modelData;
+            //submit request
+            this.$CX.autoForm.submit(this.submitUrl, query, () => {
+              const model = query;
+              for (let k in model) {
+                this.formSubmitData.push({key: k, value: model[k].toString()})
+              }
+              //..............................  逻辑代码书写 ②
+              this.$message({message: '保存成功', type: 'success', duration: 2000});
+            })
+          }
+        ).catch(err => {
+            //..............................  逻辑代码书写 ③
+            console.log(err)
+          }
+        )
+      },
+      /**
+       * auto-form Cancel  ( 取消按钮事件操作 )
+       * @param vm
+       * @param formName       button-info
+       */
+      autoFormCancel(vm, formName) {
+        this.$CX.autoForm.resetForm(vm, formName).then(
+          params => {
+            this.formSubmitData = [];
+            //..............................  逻辑代码书写 ①
+            this.$message({message: '重置成功', type: 'success', duration: 2000});
+          }
+        )
+      },
     }
   }
 </script>
 <style rel="stylesheet/scss" lang="scss">
-  .cx-input {
-    display: inline-block;
-  }
+
 </style>
