@@ -17,14 +17,15 @@
     },
     computed: {
       tbhead() {
-        if (this.type === 'attributes') {
-          return this.attributesHead;
-        }
-        else if (this.type === 'events') {
-          return this.eventsHead;
-        }
-        else {
-          return this.tableHead;
+        switch (this.type) {
+          case  'attributes':
+            return this.attributesHead;
+          case  'events':
+            return this.eventsHead;
+          case  'submitResault':
+            return this.submitResault;
+          default:
+            return this.tableHead;
         }
       },
     },
@@ -41,6 +42,10 @@
           {label: '事件名称', key: 'event', width: '160px'},
           {label: '说明', key: 'explain', width: '380px'},
           {label: '回调参数', key: 'callback', width: '320px'},
+        ],
+        submitResault: [
+          {label: '字段名', key: 'key', width: '160px'},
+          {label: '值', key: 'value', width: '320px'},
         ],
       }
     },
