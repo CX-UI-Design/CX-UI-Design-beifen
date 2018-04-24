@@ -1,7 +1,3 @@
-import Mock from "mockjs";
-import * as store from "@/utils/nsQuery/nsStore"
-import {errorMap} from "../../error/error"
-
 /*
 * 字段解释
 * resourcebuttonCode - 按钮编码
@@ -37,20 +33,12 @@ const roleMap = {
       {resourcebuttonCode: 'formCancelBtn', resourcebuttonName: '取消', resourcebuttonNameEn: 'submit', resourcebuttonType: 'FORM', resourcebuttonBigiconcls: 'single', syOrderindex: 2},
       {resourcebuttonCode: 'formEditBtn', resourcebuttonName: '编辑', resourcebuttonNameEn: 'submit', resourcebuttonType: 'FORM', resourcebuttonBigiconcls: 'single', syOrderindex: 3},
 
-
     ]
   }
 }
 export default {
   buttonList: config => {
-    const funcId = store.funcId.get();
-    if (funcId) {
-      return roleMap.buttonList;
-    }
-    else {
-      return errorMap.role.roleButtonList;
-    }
-
+    return roleMap.buttonList;
   },
 
 }
