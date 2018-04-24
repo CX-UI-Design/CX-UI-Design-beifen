@@ -32,14 +32,12 @@
   import Cookies from 'js-cookie';
   import sw from '@/switch'
   import {loginByUsername} from '../../api/user/login';
+  import {roleButtonList} from '../../api/role/role-button-list';
 
   export default {
     name: 'login',
     data() {
       return {
-        loginSuccess: " 登录成功，正在跳转... ",
-        loginError: '登录错误，请联系系统管理员',
-        validateError: '你输入的密码和账户名不匹配,请重新输入',
         //反重复提交开关
         submitSwitch: true,
         key: this.$store.state.user.key,
@@ -83,19 +81,25 @@
             loginByUsername(loginparams)
               .then(response => {
                 this.$store.dispatch('Login', response.resultData);
-                //弹出信息：登录成功
-                this.$message({
-                  message: this.loginSuccess, type: 'success', duration: 800, showClose: true,
-                  onClose: () => {
-                    this.$router.push({path: '/home/dashboard'});
+                roleButtonList({}).then(response => {
+                    this.$store.dispatch('setRoleButtonListHandle', response.resultData);
+                    //弹出信息：登录成功
+                    this.$message({
+                      message: ' 登录成功，正在跳转...', type: 'success', duration: 800, showClose: true,
+                      onClose: () => {
+                        this.$router.push({path: '/home/dashboard'});
+                      }
+                    })
                   }
-                })
+                ).catch(response => {
+                  this.$message({message: '获取按钮权限列表失败', type: 'error'})
+                });
               }).catch(response => {
-              this.$message({message: this.loginError, type: 'error'});//请求失败
+              this.$message({message: '登录错误，请联系系统管理员', type: 'error'});
             });
           } else {
             this.$message({
-              message: this.validateError,
+              message: '你输入的密码和账户名不匹配,请重新输入',
               type: 'error'
             });
           }
