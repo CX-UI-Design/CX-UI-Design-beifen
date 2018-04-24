@@ -1957,7 +1957,7 @@ export const dynamicAndLocal = {
       "name": "Broccoli spring( 高仓雄 - gcx )",
       "mobile": "18768183457",//移动电话
       "cardType": "",//证件类型
-      "cardNum": "",//证件号码
+      "cardNum": "330106199110224000",//证件号码
       "sex": "0",//性别
       "birthday": "",//出生日期
       "origin": "",//籍贯
@@ -1979,7 +1979,7 @@ export const dynamicAndLocal = {
         "funcinfoFormlabelwidth": 150,//表单字段 lable 宽度
         "isfieldRequired": true, //是否必填 required
         "resourcefieldBinding": "请输入姓名",//必填出错 提示信息
-        "resourcefieldAllowblankexp": "numEn-",//内容验证规则
+        "resourcefieldAllowblankexp": null,//内容验证规则
         "resourcefieldVtype": "string",//验证字段的 内容类型
         "resourcefieldOtherconfigObject": {
           "secondXtype": "text",//表单控件分支小类type,如input=>input-text,input-textere
@@ -2036,7 +2036,7 @@ export const dynamicAndLocal = {
         "resourcefieldCode": "cardType",  //表单model字段名称
         "resourcefieldName": "证件类型",   //表单字段 lable 名称
         "funcinfoFormlabelwidth": 150,//表单字段 lable 宽度
-        "isfieldRequired": true, //是否必填 required
+        "isfieldRequired": false, //是否必填 required
         "resourcefieldBinding": "请选择证件类型",//必填出错 提示信息
         "resourcefieldAllowblankexp": null,//内容验证规则
         "resourcefieldVtype": "string",//验证字段的 内容类型
@@ -2046,7 +2046,7 @@ export const dynamicAndLocal = {
           "max": undefined,//max
           "dynamicUrl": null, //请求地址
           "dynamicQuery": null,//请求参数
-          "clearable": 'false'
+          "clearable": false,
         },
         "resourcefieldEmptytext": "请选择证件类型",//placeholder的值
         "isResourcefieldRemoved": false,//是否禁用
@@ -2205,7 +2205,7 @@ export const dynamicAndLocal = {
         "resourcefieldCode": "nation",  //表单model字段名称
         "resourcefieldName": "民族",   //表单字段 lable 名称
         "funcinfoFormlabelwidth": 150,//表单字段 lable 宽度
-        "isfieldRequired": true, //是否必填 required
+        "isfieldRequired": false, //是否必填 required
         "resourcefieldBinding": "请输入民族",//必填出错 提示信息
         "resourcefieldAllowblankexp": null,//内容验证规则
         "resourcefieldVtype": "string",//验证字段的 内容类型
@@ -2234,7 +2234,7 @@ export const dynamicAndLocal = {
         "resourcefieldXtype": "checkbox",    //表单类型
         "resourcefieldCode": "hobby",  //表单model字段名称
         "resourcefieldName": "兴趣爱好",   //表单字段 lable 名称
-        "isfieldRequired": true, //是否必填 required
+        "isfieldRequired": false, //是否必填 required
         "resourcefieldBinding": "请选择兴趣爱好",//必填出错 提示信息
         "resourcefieldAllowblankexp": null,//内容验证规则
         "resourcefieldVtype": "array",//验证字段的 内容类型
