@@ -1,114 +1,82 @@
 //code temple
 export const code = {
-  normal: "<template>\n" +
-  "  <cx-input v-model=\"inputModel\" placeholder=\"请输入内容\" :width=\"200\" height=\"32px\"></cx-input>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel: ''\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  disabled: "<template>\n" +
-  "  <cx-input v-model=\"inputModel\" placeholder=\"请输入内容\" :width=\"200\" :height=\"32\" disabled></cx-input>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel: 'CX-UI Design'\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  readonly: "<template>\n" +
-  "  <cx-input v-model=\"inputModel\" placeholder=\"请输入内容\" :width=\"200\" readonly></cx-input>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel: 'CX-UI Design'\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  type: "<template>\n" +
-  "  <div>\n" +
-  "    <cx-input v-model=\"inputModel1\" placeholder=\"请输入内容\" type=\"textarea\" :width=\"600\" :height=\"64\" style=\"margin-bottom: 30px\"></cx-input>\n" +
-  "    <cx-input v-model=\"inputModel2\" placeholder=\"请输入内容\" type=\"textarea\" :width=\"600\" :rows=\"5\" :minlength=\"10\" :maxlength=\"20\"></cx-input>\n" +
-  "  </div>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel1: '',\n" +
-  "        inputModel2: ''\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  icon: "<template>\n" +
-  "  <div>\n" +
-  "    <cx-input v-model=\"inputModel1\" placeholder=\"请输入内容\" :width=\"200\" customIcon=\"fangchan\"></cx-input>\n" +
-  "    <cx-input v-model=\"inputModel2\" placeholder=\"请输入内容\" :width=\"200\" customIcon=\"baobiao\" @iconClick=\"iconClick(inputModel2)\"></cx-input>\n" +
-  "  </div>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel1: '',\n" +
-  "        inputModel2: '点击图标事件'\n" +
-  "      }\n" +
-  "    },\n" +
-  "    methods: {\n" +
-  "      iconClick(value) {\n" +
-  "        alert('this is input icon click, value is :' + value)\n" +
-  "      }\n" +
-  "    }\n" +
-  "  }\n" +
-  "</script>"
+  modification: '<template>\n' +
+  '  <cx-auto-form autoFormID="dynamicFormTemplate"\n' +
+  '                request-url="/mock/autoForm/template"\n' +
+  '                :query="{}"\n' +
+  '                :cover-data="coverData"\n' +
+  '                cue-type="only-error"\n' +
+  '                @afterRequest="afterRequest"\n' +
+  '  ></cx-auto-form>\n' +
+  '</template>\n' +
+  '\n' +
+  '<script>\n' +
+  '  import pickerOptionsMap from \'../../static-data/form/picker-options\';//引入本地时间日期控件的修改配置\n' +
+  '\n' +
+  '  export default {\n' +
+  '    data() {\n' +
+  '      return {\n' +
+  '        /* ===================== 覆盖/补充自动表单数据：=====================\n' +
+  '          书写格式：{\n' +
+  '             xxx（属性名称）：{\n' +
+  '                 formitemkey（表单元素字段名，同v-model字段名一致） ： value （值）\n' +
+  '             }\n' +
+  '          }\n' +
+  '          只要这个属性名是可配置的，都可以修改，具体实现规则详见源码\n' +
+  '       * =================================================================\n' +
+  '       */\n' +
+  '        coverData: {\n' +
+  '          //覆盖属性-pickerOptions的属性值\n' +
+  '          pickerOptions: {\n' +
+  '            birthday: pickerOptionsMap[\'date-point\'].birthday,//修改出生日期的组件 pickerOptions的属性值（修改为只能获取当前时间点之前的时间）\n' +
+  '          },\n' +
+  '          //覆盖属性-宽度\n' +
+  '          fieldWidth: {\n' +
+  '            origin: 700,//覆盖改变 - 籍贯字段的组件 宽度为700\n' +
+  '            nation: 700,//覆盖改变 - 民族字段的组件 宽度为700\n' +
+  '          },\n' +
+  '          //覆盖属性-所占列数\n' +
+  '          resourcefieldColspan: {\n' +
+  '            origin: 2,   //覆盖改变 - 籍贯字段的组件 所占列数为2\n' +
+  '            nation: 2,   //覆盖改变 - 民族字段的组件 所占列数为2\n' +
+  '          },\n' +
+  '          //覆盖属性-请求地址\n' +
+  '          dynamicUrl: {\n' +
+  '            cardType: \'system/dictionary/select\', //修改证件类型组件的 请求地址\n' +
+  '          },\n' +
+  '          //覆盖属性-请求数据\n' +
+  '          dynamicQuery: {\n' +
+  '            cardType: \'cardType\',//修改证件类型组件的 请求数据\n' +
+  '          },\n' +
+  '          //覆盖属性-可清空功能\n' +
+  '          clearable: {\n' +
+  '            cardType: true,//开启证件类型组件的 可清空功能\n' +
+  '          }\n' +
+  '        },\n' +
+  '      }\n' +
+  '    },\n' +
+  '    created() {\n' +
+  '      //注册渲染表单\n' +
+  '      this.$CX.autoForm.formController.set(this, \'dynamicFormTemplate\', {\n' +
+  '        show: true,\n' +
+  '      });\n' +
+  '    },\n' +
+  '    methods: {\n' +
+  '      //自动表单请求获取数据之后操作\n' +
+  '      afterRequest(vm, data) {\n' +
+  '        //..............................  逻辑代码书写 ①\n' +
+  '        data.modelData.origin = \'浙江-杭州\';//修改 origin 字段值为 \'浙江-杭州\'\n' +
+  '      },\n' +
+  '    }\n' +
+  '  }\n' +
+  '</script>\n',
 }
-//data information
-export const dataInfo = {
-  inputModel1: '',
-  inputModel2: 'CX-UI Design',
-  inputModel3: 'CX-UI Design',
-  inputModel4: '',
-  inputModel5: '',
-  inputModel6: '',
-  inputModel7: '点击图标事件',
+
+export const tip = {
+  modification: '书写格式：{\n' +
+  '           xxx（ 属性名称 ）：{\n' +
+  '           formitemkey（ 表单元素字段名，同 v-model字段名一致 ） ： value （ 值 ）\n' +
+  '        }\n' +
+  '}\n' +
+  '只要这个属性名是可配置的，都可以修改，具体实现规则详见源码'
 }
-//attributes
-export const attributes = [
-  {attr: 'type', explain: '类型', type: 'string', value: 'text / textarea', default: 'text'},
-  {attr: 'placeholder', explain: '输入框占位文本', type: 'string', value: '-', default: '-'},
-  {attr: 'disabled', explain: '是否禁用', type: 'boolean', value: '-', default: 'false'},
-  {attr: 'readonly', explain: '原生属性，是否只读', type: 'boolean', value: '-', default: 'false'},
-  {attr: 'width', explain: 'Input 模块整体的宽度', type: 'string / number', value: '-', default: '100%'},
-  {attr: 'height', explain: 'Input 模块整体的高度', type: 'string / number', value: '-', default: '32px / auto'},
-  {attr: 'minlength', explain: '最小输入长度', type: 'number / string', value: '-', default: '-'},
-  {attr: 'maxlength', explain: '最大输入长度', type: 'number / string', value: '-', default: '300'},
-  {attr: 'customIcon', explain: '输入框尾部图标', type: 'string', value: '-', default: '-'},
-  {attr: 'rows', explain: '输入框行数，只对 type="textarea" 有效', type: 'number', value: '-', default: '3'},
-  {attr: 'name', explain: '原生属性', type: 'string', value: '-', default: '-'},
-  {attr: 'autofocus', explain: '原生属性，自动获取焦点', type: 'boolean', value: 'true, false', default: 'false'},
-  {attr: 'size', explain: '输入框尺寸，只在 type!="textarea" 时，且没有设置输入框高度的情况下有效,', type: 'string', value: 'medium / small / mini', default: '-'},
-]
-//events
-export const events = [
-  {event: 'change', explain: '当绑定值变化时触发的事件', callback: '(event: Event)'},
-  {event: 'focus', explain: '在 Input 获得焦点时触发', callback: '(event: Event)'},
-  {event: 'blur', explain: '在 Input 值改变时触发', callback: '(value: string | number)'},
-  {event: 'iconClick', explain: '在 Input 图标点击时触发', callback: '(value: string | number)'},
-]
