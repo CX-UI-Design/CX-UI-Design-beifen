@@ -1,114 +1,92 @@
 //code temple
 export const code = {
-  normal: "<template>\n" +
-  "  <cx-input v-model=\"inputModel\" placeholder=\"请输入内容\" :width=\"200\" height=\"32px\"></cx-input>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel: ''\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  disabled: "<template>\n" +
-  "  <cx-input v-model=\"inputModel\" placeholder=\"请输入内容\" :width=\"200\" :height=\"32\" disabled></cx-input>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel: 'CX-UI Design'\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  readonly: "<template>\n" +
-  "  <cx-input v-model=\"inputModel\" placeholder=\"请输入内容\" :width=\"200\" readonly></cx-input>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel: 'CX-UI Design'\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  type: "<template>\n" +
-  "  <div>\n" +
-  "    <cx-input v-model=\"inputModel1\" placeholder=\"请输入内容\" type=\"textarea\" :width=\"600\" :height=\"64\" style=\"margin-bottom: 30px\"></cx-input>\n" +
-  "    <cx-input v-model=\"inputModel2\" placeholder=\"请输入内容\" type=\"textarea\" :width=\"600\" :rows=\"5\" :minlength=\"10\" :maxlength=\"20\"></cx-input>\n" +
-  "  </div>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel1: '',\n" +
-  "        inputModel2: ''\n" +
-  "      }\n" +
-  "    },\n" +
-  "  }\n" +
-  "</script>",
-  icon: "<template>\n" +
-  "  <div>\n" +
-  "    <cx-input v-model=\"inputModel1\" placeholder=\"请输入内容\" :width=\"200\" customIcon=\"fangchan\"></cx-input>\n" +
-  "    <cx-input v-model=\"inputModel2\" placeholder=\"请输入内容\" :width=\"200\" customIcon=\"baobiao\" @iconClick=\"iconClick(inputModel2)\"></cx-input>\n" +
-  "  </div>\n" +
-  "</template>\n" +
-  "\n" +
-  "<script>\n" +
-  "  export default {\n" +
-  "    data() {\n" +
-  "      return {\n" +
-  "        inputModel1: '',\n" +
-  "        inputModel2: '点击图标事件'\n" +
-  "      }\n" +
-  "    },\n" +
-  "    methods: {\n" +
-  "      iconClick(value) {\n" +
-  "        alert('this is input icon click, value is :' + value)\n" +
-  "      }\n" +
-  "    }\n" +
-  "  }\n" +
-  "</script>"
+  main: '<template>\n' +
+  '  <div>\n' +
+  '    <cx-auto-form autoFormID="dynamicFormTemplate"\n' +
+  '                  request-url="/mock/autoForm/template"\n' +
+  '                  :query="{}"\n' +
+  '                  :cover-data="coverData"\n' +
+  '                  cue-type="only-error"\n' +
+  '                  @afterRequest="afterRequest"\n' +
+  '    ></cx-auto-form>\n' +
+  '    <!--button handle-->\n' +
+  '    <cx-auto-form-operation type="form" :buttonInfo="buttonInfo" autoFormID="dynamicFormTemplate">\n' +
+  '    </cx-auto-form-operation>\n' +
+  '  </div>\n' +
+  '</template>\n' +
+  '\n' +
+  '<script>\n' +
+  '  import pickerOptionsMap from \'../../static-data/form/picker-options\';//引入本地时间日期控件的修改配置\n' +
+  '\n' +
+  '  export default {\n' +
+  '    data() {\n' +
+  '      return {\n' +
+  '        //表单提交的请求地址\n' +
+  '        submitUrl: \'/mock/autoForm/submit\',\n' +
+  '        //表单表单按钮信息\n' +
+  '        buttonInfo: [\n' +
+  '          {name: \'确定\', style: \'primary\', event: this.autoFormSubmit},\n' +
+  '          {name: \'取消\', style: \'\', event: this.autoFormCancel},\n' +
+  '        ],\n' +
+  '        //表单覆盖数据或方法\n' +
+  '        coverData: {\n' +
+  '          pickerOptions: {\n' +
+  '            birthday: pickerOptionsMap[\'date-point\'].birthday,\n' +
+  '          },\n' +
+  '        },\n' +
+  '      }\n' +
+  '    },\n' +
+  '    created() {\n' +
+  '      //注册渲染表单\n' +
+  '      this.$CX.autoForm.formController.set(this, \'dynamicFormTemplate\', {\n' +
+  '        show: true,\n' +
+  '      });\n' +
+  '    },\n' +
+  '    methods: {\n' +
+  '      //自动表单请求获取数据之后操作\n' +
+  '      afterRequest(vm, data) {\n' +
+  '        //..............................  逻辑代码书写 ①\n' +
+  '      },\n' +
+  '      /**\n' +
+  '       * auto-form submit  ( 提交按钮事件操作 )\n' +
+  '       * @param vm\n' +
+  '       * @param formName       button-info\n' +
+  '       */\n' +
+  '      autoFormSubmit(vm, formName) {\n' +
+  '        this.$CX.autoForm.validate(vm, formName).then(\n' +
+  '          params => {\n' +
+  '            //..............................  逻辑代码书写 ①\n' +
+  '            const query = params.formData.modelData;\n' +
+  '            //submit request\n' +
+  '            this.$CX.autoForm.submit(this.submitUrl, query, () => {\n' +
+  '              //..............................  逻辑代码书写 ②\n' +
+  '              this.$message({message: \'保存成功\', type: \'success\', duration: 2000});\n' +
+  '            })\n' +
+  '          }\n' +
+  '        ).catch(err => {\n' +
+  '            //..............................  逻辑代码书写 ③\n' +
+  '          }\n' +
+  '        )\n' +
+  '      },\n' +
+  '      /**\n' +
+  '       * auto-form Cancel  ( 取消按钮事件操作 )\n' +
+  '       * @param vm\n' +
+  '       * @param formName       button-info\n' +
+  '       */\n' +
+  '      autoFormCancel(vm, formName) {\n' +
+  '        this.$CX.autoForm.resetForm(vm, formName).then(\n' +
+  '          params => {\n' +
+  '            //..............................  逻辑代码书写 ①\n' +
+  '            this.$message({message: \'重置成功\', type: \'success\', duration: 2000});\n' +
+  '          }\n' +
+  '        )\n' +
+  '      },\n' +
+  '    }\n' +
+  '  }\n' +
+  '</script>\n' +
+  '\n' +
+  '<style rel="stylesheet/scss" lang="scss">\n' +
+  '\n' +
+  '</style>\n'
 }
-//data information
-export const dataInfo = {
-  inputModel1: '',
-  inputModel2: 'CX-UI Design',
-  inputModel3: 'CX-UI Design',
-  inputModel4: '',
-  inputModel5: '',
-  inputModel6: '',
-  inputModel7: '点击图标事件',
-}
-//attributes
-export const attributes = [
-  {attr: 'type', explain: '类型', type: 'string', value: 'text / textarea', default: 'text'},
-  {attr: 'placeholder', explain: '输入框占位文本', type: 'string', value: '-', default: '-'},
-  {attr: 'disabled', explain: '是否禁用', type: 'boolean', value: '-', default: 'false'},
-  {attr: 'readonly', explain: '原生属性，是否只读', type: 'boolean', value: '-', default: 'false'},
-  {attr: 'width', explain: 'Input 模块整体的宽度', type: 'string / number', value: '-', default: '100%'},
-  {attr: 'height', explain: 'Input 模块整体的高度', type: 'string / number', value: '-', default: '32px / auto'},
-  {attr: 'minlength', explain: '最小输入长度', type: 'number / string', value: '-', default: '-'},
-  {attr: 'maxlength', explain: '最大输入长度', type: 'number / string', value: '-', default: '300'},
-  {attr: 'customIcon', explain: '输入框尾部图标', type: 'string', value: '-', default: '-'},
-  {attr: 'rows', explain: '输入框行数，只对 type="textarea" 有效', type: 'number', value: '-', default: '3'},
-  {attr: 'name', explain: '原生属性', type: 'string', value: '-', default: '-'},
-  {attr: 'autofocus', explain: '原生属性，自动获取焦点', type: 'boolean', value: 'true, false', default: 'false'},
-  {attr: 'size', explain: '输入框尺寸，只在 type!="textarea" 时，且没有设置输入框高度的情况下有效,', type: 'string', value: 'medium / small / mini', default: '-'},
-]
-//events
-export const events = [
-  {event: 'change', explain: '当绑定值变化时触发的事件', callback: '(event: Event)'},
-  {event: 'focus', explain: '在 Input 获得焦点时触发', callback: '(event: Event)'},
-  {event: 'blur', explain: '在 Input 值改变时触发', callback: '(value: string | number)'},
-  {event: 'iconClick', explain: '在 Input 图标点击时触发', callback: '(value: string | number)'},
-]
+
