@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import user from './modules/user';
 import tabView from './modules/tabView';
 import SideBar from './modules/SideBar';
+import roleButton from './modules/roleButton';
 import test from './modules/test';
 
 
@@ -19,6 +20,7 @@ const store = new Vuex.Store({
     Form,
     tabView,
     SideBar,
+    roleButton,
     user,
     test
   },
