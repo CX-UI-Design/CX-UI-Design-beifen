@@ -1,100 +1,170 @@
 <template>
   <div class="win autoForm-index">
-    <cx-main-title>Input 输入框</cx-main-title>
-    <cx-describe-text>通过鼠标或键盘输入字符</cx-describe-text>
-    <!--normal template-->
-    <cx-sub-title>基础用法</cx-sub-title>
-    <cx-demo-block :codeCont="templeCode.normal" skin="github-gist">
+    <cx-main-title>表单的修改和交互</cx-main-title>
+    <cx-describe-text>表单渲染数据的修改以及表单控件的交互行为</cx-describe-text>
+    <!--modification template-->
+    <cx-sub-title>表单渲染数据的修改</cx-sub-title>
+    <cx-describe-text>表单渲染的数据可在 afterRequest 钩子函数中或者 cover-data 属性配置中修改</cx-describe-text>
+    <cx-demo-block :codeCont="templeCode.modification" skin="github-gist">
       <div slot="source">
-        <cx-input v-model="inputInfo1" placeholder="请输入内容" :width="200" height="32px"></cx-input>
+        <cx-auto-form autoFormID="dynamicFormTemplate"
+                      request-url="/mock/autoForm/template"
+                      :query="{}"
+                      :cover-data="coverData"
+                      cue-type="only-error"
+                      @afterRequest="afterRequest"
+        ></cx-auto-form>
       </div>
       <div slot="description">
-        通过 width / height 属性指定宽高，注意宽高属性值可以为数字（32），也可以为字符串（32px）
+        afterRequest 钩子函数主要指获取到数据（静态获取/动态请求）后、表单内置 form-item 循环体渲染之前的操作，在此之中修改数据所需数据；
+        cover-data 属性 是指 form-item 循环体渲染时获取数据通道的再次修改，即改变获取数据的方式，即可达到覆盖原有数据的功能
       </div>
     </cx-demo-block>
-    <!--disabled template-->
-    <cx-sub-title>禁用状态</cx-sub-title>
-    <cx-demo-block :codeCont="templeCode.disabled" skin="github-gist">
+    <cx-tip-block>
+      <cx-code :codeCont="tip.modification" skin="github-gist" transparent></cx-code>
+    </cx-tip-block>
+    <!--interacting template-->
+    <cx-sub-title>表单控件的交互行为</cx-sub-title>
+    <cx-describe-text>表单控件的交互行为可在 cover-data 属性配置中配置，或者在 提交/重置 等显性时间中体现。</cx-describe-text>
+    <cx-demo-block :codeCont="templeCode.modification" skin="github-gist">
       <div slot="source">
-        <cx-input v-model="inputInfo2" placeholder="请输入内容" :width="200" :height="32" disabled></cx-input>
-      </div>
-      <div slot="description">
-        通过 disabled 属性指定是否禁用 input 组件
-      </div>
-    </cx-demo-block>
-    <!--disabled template-->
-    <cx-sub-title>只读状态</cx-sub-title>
-    <cx-demo-block :codeCont="templeCode.readonly" skin="github-gist">
-      <div slot="source">
-        <cx-input v-model="inputInfo3" placeholder="请输入内容" :width="200" readonly></cx-input>
-      </div>
-      <div slot="description">
-        通过 readonly 属性决定 input 组件是否只读
-      </div>
-    </cx-demo-block>
-    <!--indeterminate template-->
-    <cx-sub-title>文本域</cx-sub-title>
-    <cx-describe-text>用于输入多行文本信息，通过将 type 属性的值指定为 textarea。</cx-describe-text>
-    <cx-demo-block :codeCont="templeCode.type" skin="github-gist">
-      <div slot="source">
-        <cx-input v-model="inputInfo4" placeholder="请输入内容" type="textarea" :width="600" :height="64" style="margin-bottom: 30px"></cx-input>
-        <cx-input v-model="inputInfo5" placeholder="请输入内容" type="textarea" :width="600" :rows="5" :minlength="10" :maxlength="20"></cx-input>
-      </div>
-      <div slot="description">
-        通过设置 minlength 和 maxlength 属性来设置最大最小输入长度,可以通过设置 rows 或者 height 来控制 文本域的输入高度
-      </div>
-    </cx-demo-block>
-    <!--type template-->
-    <cx-sub-title>带 icon 的输入框</cx-sub-title>
-    <cx-describe-text>带有图标标记输入类型。</cx-describe-text>
-    <cx-demo-block :codeCont="templeCode.type" skin="github-gist">
-      <div slot="source">
-        <cx-input v-model="inputInfo6" placeholder="请输入内容" :width="200" customIcon="fangchan"></cx-input>
-        <cx-input v-model="inputInfo7" placeholder="请输入内容" :width="200" customIcon="baobiao" @iconClick="iconClick(inputInfo7)"></cx-input>
-      </div>
-      <div slot="description">
-        通过设置 iconClick 属性来设置输入框图标的点击事件
-      </div>
-    </cx-demo-block>
-    <!--Attributes table-->
-    <cx-attributes-block type="attributes" title="Checkbox Attributes" :tableData="attributesData"></cx-attributes-block>
-    <!--Events table-->
-    <cx-attributes-block type="events" title="Checkbox Events" :tableData="eventsData"></cx-attributes-block>
+        <cx-auto-form autoFormID="dynamicFormTemplate"
+                      request-url="/mock/autoForm/template"
+                      :query="{}"
+                      :cover-data="coverData"
+                      cue-type="only-error"
+                      @afterRequest="afterRequest"
+        ></cx-auto-form>
+        <!--button handle-->
+        <cx-auto-form-operation type="form" :buttonInfo="buttonInfo" autoFormID="dynamicFormTemplate" style="text-align: center;margin-top: 30px"></cx-auto-form-operation>
+        <!--Attributes table-->
+        <cx-attributes-block type="submitResault" title="提交结果" :tableData="formSubmitData"></cx-attributes-block>
 
+      </div>
+      <div slot="description">
+        afterRequest 钩子函数主要指获取到数据（静态获取/动态请求）后、表单内置 form-item 循环体渲染之前的操作，在此之中修改数据所需数据；
+        cover-data 属性 是指 form-item 循环体渲染时获取数据通道的再次修改，即改变获取数据的方式，即可达到覆盖原有数据的功能
+      </div>
+    </cx-demo-block>
   </div>
 </template>
 <script>
-  import {code, dataInfo, attributes, events} from './content-config'
+  import {dynamicAndLocal} from '../../../../mock/Form/template-auto-form'
+  import pickerOptionsMap from '../../../../static-data/form/picker-options'
+
+  import {code, tip} from './content-config'
 
   export default {
-    name: 'checkbox-view',
+    name: 'dynamicAndLocal-view',
     components: {},
     data() {
       return {
+        tip: tip,
         templeCode: code,
-        inputInfo1: dataInfo.inputModel1,
-        inputInfo2: dataInfo.inputModel2,
-        inputInfo3: dataInfo.inputModel3,
-        inputInfo4: dataInfo.inputModel4,
-        inputInfo5: dataInfo.inputModel5,
-        inputInfo6: dataInfo.inputModel6,
-        inputInfo7: dataInfo.inputModel7,
-        attributesData: attributes,
-        eventsData: events,
+        submitUrl: '/mock/autoForm/submit',
+        //表单按钮信息
+        buttonInfo: [
+          {name: '确定', style: 'primary', event: this.autoFormSubmit},
+          {name: '取消', style: '', event: this.autoFormCancel},
+        ],
+        /* ===================== 覆盖/补充自动表单数据：=====================
+        书写格式：{
+              xxx（属性名称）：{
+                  formitemkey（表单元素字段名，同v-model字段名一致） ： value （值）
+              }
+          }
+          只要这个属性名是可配置的，都可以修改，具体实现规则详见源码
+        * =================================================================
+        */
+        coverData: {
+          //覆盖属性-pickerOptions的属性值
+          pickerOptions: {
+            birthday: pickerOptionsMap['date-point'].birthday,//修改出生日期的组件 pickerOptions的属性值（修改为只能获取当前时间点之前的时间）
+          },
+          //覆盖属性-宽度
+          fieldWidth: {
+            origin: 700,//覆盖改变 - 籍贯字段的组件 宽度为700
+            nation: 700,//覆盖改变 - 民族字段的组件 宽度为700
+          },
+          //覆盖属性-所占列数
+          resourcefieldColspan: {
+            origin: 2,   //覆盖改变 - 籍贯字段的组件 所占列数为2
+            nation: 2,   //覆盖改变 - 民族字段的组件 所占列数为2
+          },
+          //覆盖属性-请求地址
+          dynamicUrl: {
+            cardType: 'system/dictionary/select', //修改证件类型组件的 请求地址
+          },
+          //覆盖属性-请求数据
+          dynamicQuery: {
+            cardType: 'cardType',//修改证件类型组件的 请求数据
+          },
+          //覆盖属性-可清空功能
+          clearable: {
+            cardType: true,//开启证件类型组件的 可清空功能
+          }
+        },
+
+        formSubmitData: [],
       }
     },
     created() {
-
+      const a = this.$store.state.roleButton.roleButtonList;
+      console.log(a);
+      this.$CX.autoForm.formController.set(this, 'dynamicFormTemplate', {
+        show: true,
+      });
     },
     methods: {
-      iconClick(value) {
-        alert('this is input icon click, value is :' + value)
-      }
+      //自动表单请求获取数据 之后 操作
+      afterRequest(vm, data) {
+        //..............................  逻辑代码书写
+        data.modelData.origin = '浙江-杭州';//修改 origin 字段值为 '浙江-杭州'
+      },
+      /**
+       * auto-form submit  ( 提交按钮事件操作 )
+       * @param vm
+       * @param formName       button-info
+       */
+      autoFormSubmit(vm, formName) {
+        this.formSubmitData = [];
+        this.$CX.autoForm.validate(vm, formName).then(
+          params => {
+            //..............................  逻辑代码书写 ①
+            const query = params.formData.modelData;
+            //submit request
+            this.$CX.autoForm.submit(this.submitUrl, query, () => {
+              const model = query;
+              for (let k in model) {
+                this.formSubmitData.push({key: k, value: model[k].toString()})
+              }
+              //..............................  逻辑代码书写 ②
+              this.$message({message: '保存成功', type: 'success', duration: 2000});
+            })
+          }
+        ).catch(err => {
+            //..............................  逻辑代码书写 ③
+            console.log(err)
+          }
+        )
+      },
+      /**
+       * auto-form Cancel  ( 取消按钮事件操作 )
+       * @param vm
+       * @param formName       button-info
+       */
+      autoFormCancel(vm, formName) {
+        this.$CX.autoForm.resetForm(vm, formName).then(
+          params => {
+            this.formSubmitData = [];
+            //..............................  逻辑代码书写 ①
+            this.$message({message: '重置成功', type: 'success', duration: 2000});
+          }
+        )
+      },
     }
   }
 </script>
 <style rel="stylesheet/scss" lang="scss">
-  .cx-input {
-    display: inline-block;
-  }
+
 </style>
