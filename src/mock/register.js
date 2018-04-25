@@ -9,7 +9,10 @@ import loginAPI from './user/login'
 import roleSideBar from './role/role-side-bar/index'//侧边栏
 import roleButtonList from './role/role-button-list/index'//按钮权限列表
 
-import templateAutoForm from './Form/template-auto-form'//表单你示例
+import dynamicFormTemp from './Form/dynamicFormTemp'//表单你示例
+import changedFormTemp from './Form/changedFormTemp'//表单你示例
+
+
 import autoFormSubmit from './Form/submit/index'//表单提交
 
 import CxEasyForm from '../../../cx-easy-form/dist/cx-easy-form.min';
@@ -28,7 +31,12 @@ const registerList = [
   {url: /\/system\/permission\/list-menu/, method: 'post', target: roleSideBar.sidebar, remarks: 'get role sidebar data'},
 
   //template-auto-form
-  {url: /\/mock\/autoForm\/template/, method: 'get', target: templateAutoForm.autoform, remarks: 'template-auto-form'},
+  {url: /\/mock\/autoForm\/dynamic/, method: 'get', target: dynamicFormTemp.autoform, remarks: 'dynamicFormTemp'},
+  {url: /\/mock\/autoForm\/changed/, method: 'get', target: changedFormTemp.autoform, remarks: 'changedFormTemp'},
+
+
+
+
   //submit
   {url: /\/mock\/autoForm\/submit/, method: 'post', target: autoFormSubmit.submit, remarks: 'form submit'},
 

@@ -1,7 +1,10 @@
 import {errorMap} from "../error/error"
 import $store from '@/store/index'
+import {getQuery} from "../../utils/index"
 
+const prodEnv_API = require('../../../config/prod.env').API_ROOT;
 
+//all
 export const template_auto_form = {
   "resultCode": "200",
   "resultMsg": "模板自动表单请求数据操作成功",
@@ -1858,8 +1861,7 @@ export const template_auto_form = {
     ]
   }
 }
-
-
+//test
 export const test = {
   "resultCode": "200",
   "resultMsg": "模板自动表单请求数据操作成功",
@@ -1947,8 +1949,8 @@ export const test = {
     ],
   }
 }
-
-export const dynamicAndLocal = {
+//dynamic fomr
+export const dynamicFormTemplate = {
   "resultCode": "200",
   "resultMsg": "模板自动表单请求数据操作成功",
   "resultData": {
@@ -2281,12 +2283,16 @@ export const dynamicAndLocal = {
 
 export default {
   autoform: (config) => {
+    const api = prodEnv_API.substring(1, prodEnv_API.length - 1);//前缀域名地址
+    const u = config.url.indexOf(api + '/mock/autoForm/dynamic') >= 0;
+    const query = getQuery(config.url, "id"); //query
     const requestFormId = $store.state.Form.store.requestFormId;//当前自定义表单请求的ID值
-    if (requestFormId === "template-auto-form") {
+
+    if (u && requestFormId === "template-auto-form") {
       return test;
     }
-    else if (requestFormId === "dynamicFormTemplate") {
-      return dynamicAndLocal;
+    else if (u && query === "dynamicFormTemplate") {
+      return dynamicFormTemplate;
     }
     else {
       return errorMap.error;
