@@ -47,8 +47,6 @@
         const currIndex = (function () {
           for (let i = 0; i < len; i++) {
             if (RPList[i].path === fullPath) {
-              console.log(i);
-              console.log(RPList[i]);
               return i;
               break;
             }
@@ -65,9 +63,6 @@
         }
         this.lastRouter = JumpInfo.last;
         this.nextRouter = JumpInfo.next;
-        console.log(898989898989898);
-        console.log(this.lastRouter);
-        console.log(this.nextRouter);
       },
       /**
        * router jump
