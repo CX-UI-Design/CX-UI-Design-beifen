@@ -10,7 +10,7 @@
     <cx-demo-block :codeCont="codeTest" skin="github-gist">
       <div slot="source">
         <cx-auto-form autoFormID="template-auto-form"
-                      request-url="/mock/autoForm/template"
+                      request-url="/mock/autoForm/dynamic"
                       :query="{}"
                       :cover-data="coverData"
                       cue-type="only-error"

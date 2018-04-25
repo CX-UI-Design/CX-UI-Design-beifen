@@ -8,11 +8,11 @@
     <cx-demo-block :codeCont="templeCode.modification" skin="github-gist">
       <div slot="source">
         <cx-auto-form autoFormID="dynamicFormTemplate"
-                      request-url="/mock/autoForm/template"
-                      :query="{}"
-                      :cover-data="coverData"
+                      request-url="/mock/autoForm/dynamic"
+                      :query="{id: 'dynamicFormTemplate'}"
+                      :cover-data="coverData1"
                       cue-type="only-error"
-                      @afterRequest="afterRequest"
+                      @afterRequest="afterRequest1"
         ></cx-auto-form>
       </div>
       <div slot="description">
@@ -26,20 +26,32 @@
     <!--interacting template-->
     <cx-sub-title>表单控件的交互行为</cx-sub-title>
     <cx-describe-text>表单控件的交互行为可在 cover-data 属性配置中配置，或者在 提交/重置 等显性时间中体现。</cx-describe-text>
-    <cx-demo-block :codeCont="templeCode.modification" skin="github-gist">
+    <cx-demo-block :codeCont="templeCode.Interacting" skin="github-gist">
       <div slot="source">
-        <cx-auto-form autoFormID="dynamicFormTemplate"
-                      request-url="/mock/autoForm/template"
-                      :query="{}"
-                      :cover-data="coverData"
+        <cx-auto-form autoFormID="changedForm-man"
+                      request-url="/mock/autoForm/changed"
+                      :query="{id: 'man'}"
+                      :cover-data="coverData2"
                       cue-type="only-error"
-                      @afterRequest="afterRequest"
-        ></cx-auto-form>
-        <!--button handle-->
-        <cx-auto-form-operation type="form" :buttonInfo="buttonInfo" autoFormID="dynamicFormTemplate" style="text-align: center;margin-top: 30px"></cx-auto-form-operation>
+                      @afterRequest="afterRequest2"
+        >
+          <div slot="operation">
+            <cx-auto-form-operation type="form" :buttonInfo="buttonInfo" autoFormID="changedForm-man"></cx-auto-form-operation>
+          </div>
+        </cx-auto-form>
+        <cx-auto-form autoFormID="changedForm-woman"
+                      request-url="/mock/autoForm/changed"
+                      :query="{id: 'woman'}"
+                      :cover-data="coverData2"
+                      cue-type="only-error"
+                      @afterRequest="afterRequest3"
+        >
+          <div slot="operation">
+            <cx-auto-form-operation type="form" :buttonInfo="buttonInfo" autoFormID="changedForm-woman"></cx-auto-form-operation>
+          </div>
+        </cx-auto-form>
         <!--Attributes table-->
         <cx-attributes-block type="submitResault" title="提交结果" :tableData="formSubmitData"></cx-attributes-block>
-
       </div>
       <div slot="description">
         afterRequest 钩子函数主要指获取到数据（静态获取/动态请求）后、表单内置 form-item 循环体渲染之前的操作，在此之中修改数据所需数据；
@@ -49,7 +61,7 @@
   </div>
 </template>
 <script>
-  import {dynamicAndLocal} from '../../../../mock/Form/template-auto-form'
+  import {dynamicAndLocal} from '../../../../mock/Form/dynamicFormTemp'
   import pickerOptionsMap from '../../../../static-data/form/picker-options'
 
   import {code, tip} from './content-config'
@@ -61,6 +73,7 @@
       return {
         tip: tip,
         templeCode: code,
+        //表单提交地址
         submitUrl: '/mock/autoForm/submit',
         //表单按钮信息
         buttonInfo: [
@@ -76,7 +89,7 @@
           只要这个属性名是可配置的，都可以修改，具体实现规则详见源码
         * =================================================================
         */
-        coverData: {
+        coverData1: {
           //覆盖属性-pickerOptions的属性值
           pickerOptions: {
             birthday: pickerOptionsMap['date-point'].birthday,//修改出生日期的组件 pickerOptions的属性值（修改为只能获取当前时间点之前的时间）
@@ -104,7 +117,35 @@
             cardType: true,//开启证件类型组件的 可清空功能
           }
         },
-
+        coverData2: {
+          //覆盖属性-绑定事件
+          resourcefieldBindingfnList: {
+            sex: (params) => {
+              //当事件为 'change' ，且不为 'visibleChange' 时
+              if (params.type === 'change' && params.type !== 'visibleChange') {
+                const val = params.formData.modelData[params.modelKey];
+                //选择男性时
+                if (val === '0') {
+                  //销毁表单 'changedForm-woman'
+                  this.$CX.autoForm.formController.delete(this, 'changedForm-woman');
+                  //注册表单 'changedForm-man'
+                  this.$CX.autoForm.formController.set(this, 'changedForm-man', {
+                    show: true,
+                  });
+                }
+                //选择女性时
+                if (val === '1') {
+                  //销毁表单 'changedForm-man'
+                  this.$CX.autoForm.formController.delete(this, 'changedForm-man');
+                  //注册表单 'changedForm-woman'
+                  this.$CX.autoForm.formController.set(this, 'changedForm-woman', {
+                    show: true,
+                  })
+                }
+              }
+            }
+          },
+        },
         formSubmitData: [],
       }
     },
@@ -114,13 +155,31 @@
       this.$CX.autoForm.formController.set(this, 'dynamicFormTemplate', {
         show: true,
       });
+      this.$CX.autoForm.formController.set(this, 'changedForm-man', {
+        show: true,
+      })
+
+    },
+    mounted() {
+
     },
     methods: {
       //自动表单请求获取数据 之后 操作
-      afterRequest(vm, data) {
+      afterRequest1(vm, data) {
         //..............................  逻辑代码书写
         data.modelData.origin = '浙江-杭州';//修改 origin 字段值为 '浙江-杭州'
       },
+      //自动表单请求获取数据 之后 操作
+      afterRequest2(vm, data) {
+        //..............................  逻辑代码书写
+        data.modelData.sex = '0';//修改 origin 字段值为 '浙江-杭州'
+      },
+      //自动表单请求获取数据 之后 操作
+      afterRequest3(vm, data) {
+        //..............................  逻辑代码书写
+        data.modelData.sex = '1';//修改 origin 字段值为 '浙江-杭州'
+      },
+
       /**
        * auto-form submit  ( 提交按钮事件操作 )
        * @param vm
@@ -130,6 +189,7 @@
         this.formSubmitData = [];
         this.$CX.autoForm.validate(vm, formName).then(
           params => {
+            this.formNotify('可在提交前注入交互行为');
             //..............................  逻辑代码书写 ①
             const query = params.formData.modelData;
             //submit request
@@ -158,10 +218,22 @@
           params => {
             this.formSubmitData = [];
             //..............................  逻辑代码书写 ①
+            this.formNotify('可在重置前注入交互行为');
             this.$message({message: '重置成功', type: 'success', duration: 2000});
           }
         )
       },
+      /**
+       * form notify
+       * @param msg
+       */
+      formNotify(msg) {
+        const h = this.$createElement;
+        this.$notify({
+          title: '注入交互行为',
+          message: h('i', {style: 'color: teal'}, msg)
+        });
+      }
     }
   }
 </script>

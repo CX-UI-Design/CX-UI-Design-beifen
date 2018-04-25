@@ -22,7 +22,7 @@
     <cx-demo-block :codeCont="templeCode.dynamic" skin="github-gist">
       <div slot="source">
         <cx-auto-form autoFormID="dynamicFormTemplate"
-                      request-url="/mock/autoForm/template"
+                      request-url="/mock/autoForm/dynamic"
                       :query="{}"
                       :cover-data="coverData"
                       cue-type="only-error"
@@ -40,7 +40,7 @@
   </div>
 </template>
 <script>
-  import {dynamicAndLocal} from '../../../../mock/Form/template-auto-form'
+  import {dynamicAndLocal} from '../../../../mock/Form/dynamicFormTemp'
   import pickerOptionsMap from '../../../../static-data/form/picker-options'
 
   import {code} from './content-config'

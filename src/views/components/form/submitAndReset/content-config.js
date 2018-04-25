@@ -3,7 +3,7 @@ export const code = {
   main: '<template>\n' +
   '  <div>\n' +
   '    <cx-auto-form autoFormID="dynamicFormTemplate"\n' +
-  '                  request-url="/mock/autoForm/template"\n' +
+  '                  request-url="/mock/autoForm/dynamic"\n' +
   '                  :query="{}"\n' +
   '                  :cover-data="coverData"\n' +
   '                  cue-type="only-error"\n' +
