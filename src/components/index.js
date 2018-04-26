@@ -1,5 +1,9 @@
 import Vue from 'vue'
 
+
+import SpotWaveBack from '../components/spotWaveBack/spotWaveBack.vue';       //底部链接导航
+
+
 import Code from '../components/Code/index.vue';                  //代码块
 import DemoBlock from '../components/Demo-block';                  //返演示模块
 
@@ -24,6 +28,7 @@ import FooterNav from '../components/Footer-nav/footer-nav.vue';       //底部�
 
 
 const components = [
+  SpotWaveBack,
   Code,
   DemoBlock,
 
