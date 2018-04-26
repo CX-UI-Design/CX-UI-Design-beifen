@@ -23,7 +23,7 @@
       <div slot="source">
         <cx-auto-form autoFormID="dynamicFormTemplate"
                       request-url="/mock/autoForm/dynamic"
-                      :query="{}"
+                      :query="{id: 'dynamicFormTemplate'}"
                       :cover-data="coverData"
                       cue-type="only-error"
         ></cx-auto-form>
@@ -40,9 +40,8 @@
   </div>
 </template>
 <script>
-  import {dynamicAndLocal} from '../../../../mock/Form/dynamicFormTemp'
+  import {dynamicFormTemplate} from '../../../../mock/Form/dynamicFormTemp'
   import pickerOptionsMap from '../../../../static-data/form/picker-options'
-
   import {code} from './content-config'
 
   export default {
@@ -51,7 +50,7 @@
     data() {
       return {
         templeCode: code,
-        loaclFormdata: dynamicAndLocal.resultData,
+        loaclFormdata: dynamicFormTemplate.resultData,
         coverData: {
           pickerOptions: {
             birthday: pickerOptionsMap['date-point'].birthday,
