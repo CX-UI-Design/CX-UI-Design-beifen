@@ -18,8 +18,15 @@ const FormEvent = {
       }
     })
   },
-  test: () => {
-    // alert('外部传入');
+  //在表单交互行为示例页面，作为典型案例
+  eventTemp: (params) => {
+    console.log(params);
+    const h = params.vm.$createElement;
+    const msg = '这是新加入的交互提示，你也可以自行在其中加入表单交互的相关逻辑'
+    params.vm.$notify({
+      title: '新的交互行为',
+      message: h('i', {style: 'color: teal'}, msg)
+    });
   }
 }
 export default FormEvent;
