@@ -15,7 +15,6 @@
 
     //窗口标题
     .win-tit {
-      @include tit-base-style(20px, 5px, $--color-primary);
       text-align: left;
       span {
         &.unread {
