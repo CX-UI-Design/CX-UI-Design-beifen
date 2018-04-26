@@ -146,7 +146,8 @@ export const constantRouterMap = [
         meta: {requireAuth: true},
         children: [
           {path: 'dynamicAndLocal', component: _import('components/form/dynamicAndLocal/dynamicAndLocal'), meta: {requireAuth: true}, name: '动/静态数据表单'},
-          {path: 'modifyAndInteracting', component: _import('components/form/modifyAndInteracting/modifyAndInteracting'), meta: {requireAuth: true}, name: '表单修改与交互'},
+          {path: 'modify', component: _import('components/form/modify/modify'), meta: {requireAuth: true}, name: '表单数据修改'},
+          {path: 'interacting', component: _import('components/form/interacting/interacting'), meta: {requireAuth: true}, name: '表单行为交互'},
           {path: 'submitAndReset', component: _import('components/form/submitAndReset/submitAndReset'), meta: {requireAuth: true}, name: '表单提交与重置'},
 
         ]
