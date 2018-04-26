@@ -1949,7 +1949,7 @@ export const test = {
     ],
   }
 }
-//dynamic fomr
+//dynamic form
 export const dynamicFormTemplate = {
   "resultCode": "200",
   "resultMsg": "模板自动表单请求数据操作成功",
