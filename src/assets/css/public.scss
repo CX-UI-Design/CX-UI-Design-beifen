@@ -92,14 +92,7 @@ div, svg {
 }
 
 /* -------------------------  工作台 整体界面参数  ------------------------- */
-@mixin tit-base-style( $base-size,$base-gap,$color) {
-  text-align: center;
-  font-size: $base-size;
-  font-style: normal;
-  color: $color;
-  padding-top: $base-gap;
-  padding-bottom: $base-gap;
-}
+
 
 @mixin submit-base-style( $base-size,$base-gap,$color) {
   width: $base-size;
@@ -113,30 +106,12 @@ div, svg {
 }
 
 /* title */
-.large-tit {
-  @include tit-base-style(48px, 20px, rgba(255, 255, 255, .98));
-}
-
-.middle-tit {
-  @include tit-base-style(30px, 15px, rgba(255, 255, 255, .98));
-}
-
-.small-tit {
-  @include tit-base-style(18px, 5px, rgba(255, 255, 255, .98));
-}
 
 /* submit */
 .large-submit {
   @include submit-base-style(300px, 10px, rgba(255, 255, 255, .98));
 }
 
-.middle-submit {
-  @include submit-base-style(120px, 10px, rgba(255, 255, 255, .98));
-}
-
-.small-submit {
-  @include submit-base-style(60px, 10px, rgba(255, 255, 255, .98));
-}
 
 /* iconfont - Button */
 .el-button.btn-icon {
