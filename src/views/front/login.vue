@@ -2,29 +2,30 @@
 <template>
   <div class="front-content" id="login">
     <div class="contView">
-      <div class="middle-tit">Elemment-UI封装示例</div>
-      <div class="fcont">
-        <el-form :model="loginForm" :rules="rules_login" ref="loginForm" class="demo-ruleForm">
-          <!--用户名-->
-          <el-form-item prop="account">
-            <el-input type="account" v-model="loginForm.account" auto-complete="off" placeholder="用户名"></el-input>
-          </el-form-item>
-          <!--密码-->
-          <el-form-item prop="password">
-            <el-input type="password" v-model="loginForm.password" auto-complete="off" placeholder="密码"></el-input>
-          </el-form-item>
-          <!--记住密码/忘记密码/立即注册-->
-          <el-form-item prop="resource" class="handle">
-            <el-checkbox-group v-model="loginForm.remember" class="fl remember">
-              <el-checkbox label="记住密码" name="remember"></el-checkbox>
-            </el-checkbox-group>
-          </el-form-item>
-          <!--登陆-->
-          <el-form-item class="txtC">
-            <el-button class="large-submit" type="primary" @click="submitForm('loginForm')" v-waves>登录</el-button>
-          </el-form-item>
-        </el-form>
+      <div class="front-Logo">
+        CX-UI
+        <i>Design</i>
       </div>
+      <el-form :model="loginForm" :rules="rules_login" ref="loginForm" class="demo-ruleForm">
+        <!--用户名-->
+        <el-form-item prop="account">
+          <el-input type="account" v-model="loginForm.account" auto-complete="off" placeholder="用户名"></el-input>
+        </el-form-item>
+        <!--密码-->
+        <el-form-item prop="password">
+          <el-input type="password" v-model="loginForm.password" auto-complete="off" placeholder="密码"></el-input>
+        </el-form-item>
+        <!--记住密码/忘记密码/立即注册-->
+        <!--<el-form-item prop="resource" class="handle">-->
+        <!--<el-checkbox-group v-model="loginForm.remember" class="fl remember">-->
+        <!--<el-checkbox label="记住密码" name="remember"></el-checkbox>-->
+        <!--</el-checkbox-group>-->
+        <!--</el-form-item>-->
+        <!--登陆-->
+        <el-form-item class="txtC">
+          <el-button class="large-submit" type="primary" @click="submitForm('loginForm')" v-waves>登录</el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -110,6 +111,7 @@
 </script>
 <style rel="stylesheet/scss" lang="scss">
   $base-size: 24px;
+  $base-gap: 40px;
   $ipt-back: rgba(49, 70, 94, 0.9);
   $border-color: rgba(255, 255, 255, 0.1);
   #login {
