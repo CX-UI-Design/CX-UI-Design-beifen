@@ -10,7 +10,10 @@ import roleSideBar from './role/role-side-bar/index'//侧边栏
 import roleButtonList from './role/role-button-list/index'//按钮权限列表
 
 import dynamicFormTemp from './Form/dynamicFormTemp'//表单你示例
-import changedFormTemp from './Form/changedFormTemp'//表单你示例
+import toggleTemp from './Form/toggleTemp'//表单你示例
+import eventTemp from './Form/eventTemp'//表单你示例
+
+
 
 
 import autoFormSubmit from './Form/submit/index'//表单提交
@@ -32,7 +35,8 @@ const registerList = [
 
   //template-auto-form
   {url: /\/mock\/autoForm\/dynamic/, method: 'get', target: dynamicFormTemp.autoform, remarks: 'dynamicFormTemp'},
-  {url: /\/mock\/autoForm\/changed/, method: 'get', target: changedFormTemp.autoform, remarks: 'changedFormTemp'},
+  {url: /\/mock\/autoForm\/changed/, method: 'get', target: toggleTemp.autoform, remarks: 'toggleTemp'},
+  {url: /\/mock\/autoForm\/event/, method: 'get', target: eventTemp.autoform, remarks: 'eventTemp'},
 
 
 
