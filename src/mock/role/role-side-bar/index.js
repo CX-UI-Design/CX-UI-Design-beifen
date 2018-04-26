@@ -143,8 +143,9 @@ export const sideBarData = {
           "path": "/components/form",
           "children": [
             {"groupName": "动/静态数据表单", "thirdIndex": "1", "path": "/components/form/dynamicAndLocal", "icon": ""},
-            {"groupName": "修改与交互", "thirdIndex": "2", "path": "/components/form/modifyAndInteracting", "icon": ""},
-            {"groupName": "提交与重置", "thirdIndex": "3", "path": "/components/form/submitAndReset", "icon": ""},
+            {"groupName": "表单数据修改", "thirdIndex": "2", "path": "/components/form/modify", "icon": ""},
+            {"groupName": "表单行为交互", "thirdIndex": "3", "path": "/components/form/interacting", "icon": ""},
+            {"groupName": "提交与重置", "thirdIndex": "4", "path": "/components/form/submitAndReset", "icon": ""},
           ]
         },
       ]
