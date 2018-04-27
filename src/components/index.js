@@ -1,7 +1,9 @@
 import Vue from 'vue'
 
 
-import SpotWaveBack from '../components/spotWaveBack/spotWaveBack.vue';       //底部链接导航
+import SpotWave from './canvas-back/spot-wave/spot-wave.vue';       //底部链接导航
+import GlitteringStars from './canvas-back/glittering-stars/glittering-stars.vue';       //底部链接导航
+import CanvasBack from './canvas-back/index.vue';       //底部链接导航
 
 
 import Code from '../components/Code/index.vue';                  //代码块
@@ -28,7 +30,10 @@ import FooterNav from '../components/Footer-nav/footer-nav.vue';       //底部�
 
 
 const components = [
-  SpotWaveBack,
+  SpotWave,
+  GlitteringStars,
+  CanvasBack,
+
   Code,
   DemoBlock,
 
