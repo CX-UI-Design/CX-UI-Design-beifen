@@ -9,7 +9,6 @@ import 'cx-theme/dist/cx-theme.min.css'
 import '../assets/css/theme-cover.scss'//ele cover css
 import '../assets/css/public.scss'//public css
 import '../assets/css/modules/layout/layout.scss'//bench index style
-import '../assets/css/modules/front/front.scss'//front
 import '../utils/svgConfig'//iconfont - config
 
 /* ---------------- js ( Framework or auxiliary function ) ---------------- */
