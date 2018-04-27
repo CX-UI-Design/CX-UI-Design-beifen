@@ -56,6 +56,18 @@ export const constantRouterMap = [
       {path: 'dashboard', component: _import('dashboard/index'), meta: {requireAuth: true}, name: '欢迎页面'},
     ]
   },
+  // guide
+  {
+    path: '/guide',
+    component: Layout,
+    redirect: '/guide/install/install',
+    name: "开发指南",
+    children: [
+      {path: 'install', component: _import('guide/install/install'), meta: {requireAuth: true}, name: '安装'},
+      {path: 'fastwork', component: _import('guide/fastwork/fastwork'), meta: {requireAuth: true}, name: '快速上手'},
+      {path: 'language', component: _import('guide/language/language'), meta: {requireAuth: true}, name: '国际化'},
+    ]
+  },
   //component
   {
     path: '/components',
