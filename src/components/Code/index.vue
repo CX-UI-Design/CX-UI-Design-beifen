@@ -1,6 +1,6 @@
 <template>
   <div class="cx-code__block" v-highlight>
-     <pre><code :class="['hljs language-html',{'transparent':transparent}]" v-text="codeCont">
+     <pre><code :class="['hljs language-'+type,{'transparent':transparent}]" v-text="codeCont">
      </code></pre>
   </div>
 </template>
@@ -8,6 +8,7 @@
   export default {
     name: 'cx-code',
     props: {
+      type: {type: String, default: 'html'},//code type
       codeCont: {type: String},
       skin: {type: String},
       transparent: {type: Boolean, default: false},
@@ -35,6 +36,7 @@
     height: auto;
     pre {
       code.hljs {
+        width: 100%;
         line-height: 1.8;
         font-family: Menlo, Monaco, Consolas, Courier, monospace;
         font-size: 12px;
@@ -42,6 +44,7 @@
         background-color: #fafafa;
         border: 1px solid #eaeefb;
         border-radius: 4px;
+        box-sizing: border-box;
         &.transparent {
           background-color: transparent;
           border: none;
