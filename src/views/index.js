@@ -18,6 +18,7 @@ import vueWaves from '../directive/waves';// waves command
 import formEvent from '../utils/formEvent'
 
 import CxEasyForm from '../../../cx-easy-form/dist/cx-easy-form.min';
+
 import '../../../cx-easy-form/dist/cx-easy-form.min.css';
 
 Vue.use(ElementUI);
@@ -38,3 +39,6 @@ Vue.use(CxEasyForm.body, {
 new Vue({
   ElementUI,
 });
+
+
+
