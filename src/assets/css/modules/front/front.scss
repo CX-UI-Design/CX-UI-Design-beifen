@@ -1,14 +1,10 @@
 @import "../../public";
 //登录注册页背景
 $front-back: rgba(45, 58, 75, 0.98);
-//$front-back: rgba(250, 70, 134, 0.98);
 //前台 内容 背景色
 $content-back: null;
-//服务协定 内容 背景色
-$dialog-back: rgba(0, 0, 0, 0.92);
-
 //前台基本宽度
-$front-base-width: 380px;
+$front-width: 380px;
 //前台LOGO基本高度
 $front-logo-height: 240px;
 //前台 内部内容左右padding
@@ -37,20 +33,27 @@ $front-base-gap: 10px;
     font-style: normal;
     color: #ffffff;
     padding: 38px 0 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select:none;
     i {
       font-size: 40px;
     }
   }
 
   /*login forget register resetpw successpw  ----- mainbg*/
-  .front-content {
-    position: relative;
-    width: $front-base-width - $front-content-padLR*2;
-    height: auto;
+  #login.front-content {
+    position: absolute;
+    width: $front-width;
     padding: $front-content-padTB $front-content-padLR;
-    margin: 0 auto;
+    left: 50%;
+    top: 50%;
+    margin-left: -$front-width/2;
+    margin-top: -250px;
     background-color: $content-back;
     border-radius: 20px;
+    box-sizing: border-box;
     //操作文字
     .handle {
       a {
@@ -63,6 +66,28 @@ $front-base-gap: 10px;
           text-decoration: underline;
         }
       }
+      margin-bottom: 10px;
+    }
+    .el-input {
+      .el-input__inner {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: $front-back !important;
+        color: #ffffff !important;
+        border-radius: 5px;
+      }
+    }
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $front-back inset;
+      border: 1px solid rgba(255, 255, 255, .1) !important;
+      color: #ffffff !important;
+
+    }
+    input[type=text]:focus, input[type=password]:focus, textarea:focus {
+      -webkit-box-shadow: 0 0 0 1000px $front-back inset;
+      border: 1px solid rgba(255, 255, 255, .1) !important;
+      color: #ffffff !important;
     }
   }
 }
