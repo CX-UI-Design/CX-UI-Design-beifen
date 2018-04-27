@@ -1,14 +1,11 @@
 <template>
-
-  <spot-wave-back></spot-wave-back>
-
-  <!--<cx-auto-form autoFormID="formEventTemp"-->
-  <!--request-url="/mock/autoForm/event"-->
-  <!--:query="{}"-->
-  <!--:cover-data="coverData"-->
-  <!--cue-type="only-error"-->
-  <!--&gt;-->
-  <!--</cx-auto-form>-->
+  <cx-auto-form autoFormID="formEventTemp"
+                request-url="/mock/autoForm/event"
+                :query="{}"
+                :cover-data="coverData"
+                cue-type="only-error"
+  >
+  </cx-auto-form>
 </template>
 
 <script>
