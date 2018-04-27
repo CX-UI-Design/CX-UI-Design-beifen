@@ -110,36 +110,5 @@
   }
 </script>
 <style rel="stylesheet/scss" lang="scss">
-  $base-size: 24px;
-  $base-gap: 40px;
-  $ipt-back: rgba(49, 70, 94, 0.9);
-  $border-color: rgba(255, 255, 255, 0.1);
-  #login {
-    top: -60px;
-    .handle {
-      margin-bottom: 10px;
-    }
-    .el-input {
-      .el-input__inner {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: $ipt-back !important;
-        color: #ffffff !important;
-        border-radius: 5px;
-      }
-    }
-    input:-webkit-autofill,
-    textarea:-webkit-autofill,
-    select:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 1000px $ipt-back inset;
-      border: 1px solid rgba(255, 255, 255, .1) !important;
-      color: #ffffff !important;
 
-    }
-
-    input[type=text]:focus, input[type=password]:focus, textarea:focus {
-      -webkit-box-shadow: 0 0 0 1000px $ipt-back inset;
-      border: 1px solid rgba(255, 255, 255, .1) !important;
-      color: #ffffff !important;
-    }
-  }
 </style>
