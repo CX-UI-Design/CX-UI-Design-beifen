@@ -19,19 +19,19 @@ export const sideBarData = {
           "groupName": "安装",
           "icon": "",
           "secondIndex": "1",
-          "path": "/home/dashboard"
+          "path": "/guide/install"
         },
         {
           "groupName": "快速上手",
           "icon": "",
           "secondIndex": "2",
-          "path": "/home/dashboard"
+          "path": "/guide/fastwork"
         },
         {
           "groupName": "国际化",
           "icon": "",
           "secondIndex": "3",
-          "path": "/home/dashboard"
+          "path": "/guide/language"
         },
       ]
     },
