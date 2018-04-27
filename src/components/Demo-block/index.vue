@@ -7,7 +7,7 @@
       <div class="cx-demo__description" :id="codeID+'__description'">
         <slot name="description"></slot>
       </div>
-      <cx-code :codeCont="codeCont" skin="github-gist"></cx-code>
+      <cx-code :codeCont="codeCont" skin="github-gist" :type="type"></cx-code>
     </div>
     <div class="cx-demo__control" @click="controlClick(metaDom)">
       <i :class="control.icon"></i>
@@ -22,6 +22,7 @@
       codeCont: {type: String},//code content
       skin: {type: String},//code skin
       gap: {type: String},
+      type: {type: String, default: 'html'},//code type
       codeID: {
         type: String, default: function () {
           return Math.random().toString(36).substr(2);
