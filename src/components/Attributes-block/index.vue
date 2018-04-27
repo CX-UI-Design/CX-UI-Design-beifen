@@ -1,6 +1,6 @@
 <template>
   <div class="cx-attributes-block">
-    <cx-sub-title>{{title}}</cx-sub-title>
+    <cx-sub-title v-if="title">{{title}}</cx-sub-title>
     <cx-attributes-table :type="type" :tableData="tableData" :tableHead="tableHead"></cx-attributes-table>
   </div>
 </template>
@@ -8,7 +8,7 @@
   export default {
     name: 'cx-attributes-block',
     props: {
-      title: {type: String},
+      title: {type: String, default: null},
       type: {type: String},
       tableHead: {type: Array},
       tableData: {type: Array},
