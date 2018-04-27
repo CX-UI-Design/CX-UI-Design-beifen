@@ -1,3 +1,4 @@
+<!-- spot wave background component -->
 <template>
   <div class="spotWaveBack">
     <canvas id="spotWaveBack_canvas"></canvas>
@@ -5,10 +6,10 @@
   </div>
 </template>
 <script>
-  import ParticleWave from './spotWaveBack'
+  import ParticleWave from './spot-wave'
 
   export default {
-    name: 'spotWaveBack',
+    name: 'spot-wave',
     props: {
       width: {type: Number, default: 300},
       height: {type: Number, default: 300},
@@ -44,6 +45,9 @@
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
   .spotWaveBack {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     #spotWaveBack_canvas {
       display: block;
       position: absolute;
