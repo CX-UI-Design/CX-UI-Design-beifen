@@ -26,7 +26,6 @@
     <cx-attributes-block title="Attributes" :tableData="tableData" :tableHead="tableHead"></cx-attributes-block>
 
 
-
   </div>
 </template>
 <script>
