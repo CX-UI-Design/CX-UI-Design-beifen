@@ -1,7 +1,5 @@
 <template>
   <div class="win autoForm-index">
-    <charge-standard-from></charge-standard-from>
-
     <cx-main-title>自动表单</cx-main-title>
     <cx-sub-title>示例用法</cx-sub-title>
     <cx-describe-text>这是自动表单的示例用法，你可以将此作为参考进行自我配置</cx-describe-text>
@@ -33,13 +31,10 @@
 <script>
   import {code} from './test'
   import pickerOptionsMap from '../../static-data/form/picker-options'
-  import chargeStandardFrom from '../../components/charge-standard/index.vue'
 
   export default {
     name: 'autoForm-index',
-    components: {
-      chargeStandardFrom,
-    },
+    components: {},
     data() {
       return {
         codeTest: code.test.html,
