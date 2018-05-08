@@ -29,6 +29,9 @@ import BackToTop from '../components/BackToTop/index.vue';             //返回�
 import FooterNav from '../components/Footer-nav/footer-nav.vue';       //底部链接导航
 
 
+import NsDialog from '../components/others/dialog.vue';       //底部链接导航
+
+
 const components = [
   SpotWave,
   GlitteringStars,
@@ -49,6 +52,7 @@ const components = [
   iconSvg,
   BackToTop,
   FooterNav,
+  NsDialog,
 ]
 
 //binding component
