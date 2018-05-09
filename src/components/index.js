@@ -21,7 +21,6 @@ import DescribeText from '../components/Text-block/Describe-text';              
 import AttributesTable from './Attributes-block/Attributes-table/index.vue';        //attributes table
 import AttributesBlock from './Attributes-block/index.vue';        //attributes block
 
-
 import iconSvg from '../components/Icon/icon-svg.vue';                  //返回顶部
 
 import BackToTop from '../components/BackToTop/index.vue';             //返回顶部
