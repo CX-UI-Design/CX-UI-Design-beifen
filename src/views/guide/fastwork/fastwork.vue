@@ -48,7 +48,7 @@
   import {code, optionsConf} from './content-config'
 
   export default {
-    name: 'icon-view',
+    name: 'fastwork',
     components: {},
     data() {
       return {

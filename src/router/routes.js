@@ -60,7 +60,7 @@ export const constantRouterMap = [
   {
     path: '/guide',
     component: Layout,
-    redirect: '/guide/install/install',
+    redirect: '/guide/install',
     name: "开发指南",
     children: [
       {path: 'install', component: _import('guide/install/install'), meta: {requireAuth: true}, name: '安装'},
@@ -68,6 +68,21 @@ export const constantRouterMap = [
       {path: 'language', component: _import('guide/language/language'), meta: {requireAuth: true}, name: '国际化'},
     ]
   },
+
+  // overview
+  {
+    path: '/overview',
+    component: Layout,
+    redirect: '/overview/display',
+    name: "总览",
+    children: [
+      {path: 'display', component: _import('overview/display/display'), meta: {requireAuth: true}, name: '演示'},
+      {path: 'demo', component: _import('overview/demo/demo'), meta: {requireAuth: true}, name: '成果示例'},
+    ]
+  },
+
+
+
   //component
   {
     path: '/components',

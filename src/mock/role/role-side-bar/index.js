@@ -46,13 +46,13 @@ export const sideBarData = {
           "groupName": "演示",
           "icon": "",
           "secondIndex": "1",
-          "path": "/home/dashboard"
+          "path": "/overview/display"
         },
         {
-          "groupName": "快速构",
+          "groupName": "成果示例",
           "icon": "",
           "secondIndex": "2",
-          "path": "/home/dashboard"
+          "path": "/overview/demo"
         },
       ]
     },

@@ -2279,6 +2279,300 @@ export const dynamicFormTemplate = {
     ],
   }
 }
+//base from demo
+export const baseFromDemo = {
+  "resultCode": "200",
+  "resultMsg": "模板自动表单请求数据操作成功",
+  "resultData": {
+    //v-model 绑定字段对象的属性及值
+    "modelData": {
+      "ipt": "",
+      "select": "",
+      "radio": "",
+      "checkbox": [],
+      "datepicker": "",
+      "switch": "",
+      "slider": 500,
+      "sliderRange": [8, 20],
+    },
+    //表单信息
+    "info": {
+      "funcinfoFormlabelwidth": 100,
+      "funcinfoFormcols": 2    //表单所占列数
+    },
+    //表单控件循环信息
+    "fields": [
+      // input
+      {
+        "resourcefieldXtype": "input",    //表单类型
+        "resourcefieldCode": "ipt",  //表单model字段名称
+        "resourcefieldName": "输入框",   //表单字段 lable 名称
+        "funcinfoFormlabelwidth": 150,//表单字段 lable 宽度
+        "isfieldRequired": true, //是否必填 required
+        "resourcefieldBinding": "请输入姓名",//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "string",//验证字段的 内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": "text",//表单控件分支小类type,如input=>input-text,input-textere
+          "min": undefined,//min
+          "max": 10,//max
+        },
+        "resourcefieldEmptytext": "请输入",//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 350,//表单元素部分宽度
+        "fieldHeight": 32,//表单元素部分高度
+        "resourcefieldStep": null,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,//表单控件图标
+        "isResourcefieldEditable": false,//是否可编辑
+        "resourcefieldColspan": 1,//所占列数
+        "items": null,//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": [],//事件名称集合
+      },
+      // select
+      {
+        "resourcefieldXtype": "select",    //表单类型
+        "resourcefieldCode": "select",  //表单model字段名称
+        "resourcefieldName": "下拉框",   //表单字段 lable 名称
+        "isfieldRequired": true, //是否必填 required
+        "resourcefieldBinding": "请选择",//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "string",//验证字段的 内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": "normal",//表单控件分支小类type,如input=>input-text,input-textere
+          "min": undefined,//min
+          "max": undefined,//max
+        },
+        "resourcefieldEmptytext": "请选择",//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 350,//表单元素部分宽度
+        "fieldHeight": 32,//表单元素部分高度
+        "resourcefieldStep": null,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,//表单控件图标
+        "isResourcefieldEditable": false,//是否可编辑
+        "resourcefieldColspan": 1,//所占列数
+        "items": [
+          {"label": "下拉框1", "value": "select1"},
+          {"label": "下拉框2", "value": "select2"}
+        ],//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": [],//事件名称集合
+        "dynamicUrl": "system/dictionary/select", //请求地址
+        "dynamicQuery": "ownerType",//请求参数
+      },
+      // radio
+      {
+        "resourcefieldXtype": "radio",    //表单类型
+        "resourcefieldCode": "sex",  //表单model字段名称
+        "resourcefieldName": "单选框",   //表单字段 lable 名称
+        "isfieldRequired": true, //是否必填 required
+        "resourcefieldBinding": "请选择",//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "string",//验证字段的 内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": "normal",//表单控件分支小类type,如input=>input-text,input-textere
+          "dynamicUrl": null, //请求地址
+          "dynamicQuery": "sex",//请求参数
+          "min": undefined,//min
+          "max": undefined,//max
+        },
+        "resourcefieldEmptytext": "请选择",//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 350,//表单元素部分宽度
+        "fieldHeight": 32,//表单元素部分高度
+        "resourcefieldStep": null,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,//表单控件图标
+        "isResourcefieldEditable": false,//是否可编辑
+        "resourcefieldColspan": 1,//所占列数
+        "items": [
+          {
+            "label": "男",
+            "value": "0"
+          },
+          {
+            "label": "女",
+            "value": "1"
+          }
+        ],//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": [],//事件名称集合
+      },
+      // datepicker
+      {
+        "resourcefieldXtype": "datepicker",    //表单类型
+        "resourcefieldCode": "datepicker",  //表单model字段名称
+        "resourcefieldName": "日期控件",   //表单字段 lable 名称
+        "funcinfoFormlabelwidth": 150,//表单字段 lable 宽度
+        "isfieldRequired": true, //是否必填 required
+        "resourcefieldBinding": "请选择",//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "date",//验证字段的 内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": "datetime",//表单控件分支小类type,如input=>input-text,input-textere
+          "min": undefined,//min
+          "max": undefined,//max
+          "format": "yyyy 年 MM 月 dd 日",
+          "value-format": "yyyy-MM-dd",
+        },
+        "resourcefieldEmptytext": "请选择",//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 350,//表单元素部分宽度
+        "fieldHeight": 32,//表单元素部分高度
+        "resourcefieldStep": null,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,//表单控件图标
+        "isResourcefieldEditable": false,//是否可编辑
+        "resourcefieldColspan": 1,//所占列数
+        "items": null,//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": [],//事件名称集合
+      },
+      // checkbox
+      {
+        "resourcefieldXtype": "checkbox",    //表单类型
+        "resourcefieldCode": "checkbox",  //表单model字段名称
+        "resourcefieldName": "多选框",   //表单字段 lable 名称
+        "isfieldRequired": false, //是否必填 required
+        "resourcefieldBinding": "请选择",//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "array",//验证字段的 内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": "normal",//表单控件分支小类type,如input=>input-text,input-textere
+          "min": 0,//min
+          "max": 5,//max
+        },
+        "resourcefieldEmptytext": null,//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 700,//表单元素部分宽度
+        "fieldHeight": 32,//表单元素部分高度
+        "resourcefieldStep": null,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,//表单控件图标
+        "isResourcefieldEditable": false,//是否可编辑
+        "resourcefieldColspan": 2,//所占列数
+        "items": [
+          {"label": "多选框1", "value": "checkbox1"},
+          {"label": "多选框2", "value": "checkbox2"},
+          {"label": "多选框3", "value": "checkbox3", "disabled": true},
+          {"label": "多选框4", "value": "checkbox4"},
+          {"label": "多选框5", "value": "checkbox5"},
+          {"label": "多选框6", "value": "checkbox6"},
+          {"label": "多选框7", "value": "checkbox7"},
+          {"label": "多选框8", "value": "checkbox8"},
+          {"label": "多选框9", "value": "checkbox9"},
+          {"label": "多选框10", "value": "checkbox10"},
+          {"label": "多选框11", "value": "checkbox11"},
+          {"label": "多选框12", "value": "checkbox12"},
+
+        ],//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": [],//事件名称集合
+      },
+      // switch
+      {
+        "resourcefieldXtype": "switch",    //表单类型
+        "resourcefieldCode": "switch",  //表单model字段名称
+        "resourcefieldName": "开关",   //表单字段 lable 名称
+        "funcinfoFormlabelwidth": 150,//表单字段 lable 宽度
+        "isfieldRequired": false, //是否必填 required
+        "resourcefieldBinding": "请选择",//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "boolean",//验证字段的内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": null,//表单控件分支小类type,如input=>input-text,input-textere
+          "min": undefined,//min
+          "max": undefined,//max
+        },
+        "resourcefieldEmptytext": null,//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 350,//表单元素部分宽度
+        "fieldHeight": 32,//表单元素部分高度
+        "resourcefieldStep": null,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,//表单控件图标
+        "isResourcefieldEditable": false,//是否可编辑
+        "resourcefieldColspan": 1,//所占列数
+        "items": null,//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": [],//事件名称集合
+      },
+      // slider
+      {
+        "resourcefieldXtype": "slider",//表单类型
+        "resourcefieldCode": "slider",//表单model字段名称
+        "resourcefieldName": "滑块",
+        "isfieldRequired": false,
+        "resourcefieldBinding": null,//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "number",//验证字段的内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": null,//表单控件分支小类type,如input=>input-text,input-textere
+          "min": 100,
+          "max": 1000,
+        },
+        "resourcefieldEmptytext": null,//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 700,//表单元素部分宽度
+        "fieldHeight": null,//表单元素部分高度
+        "resourcefieldStep": 10,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,
+        "isResourcefieldEditable": false,
+        "resourcefieldColspan": 2,
+        "items": null,//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": []//事件名称集合
+      },
+      // slider-range
+      {
+        "resourcefieldXtype": "slider",//表单类型
+        "resourcefieldCode": "sliderRange",//表单model字段名称
+        "resourcefieldName": "滑块(范围)",
+        "isfieldRequired": false,
+        "resourcefieldBinding": null,//必填出错 提示信息
+        "resourcefieldAllowblankexp": null,//内容验证规则
+        "resourcefieldVtype": "array",//验证字段的内容类型
+        "resourcefieldOtherconfigObject": {
+          "secondXtype": null,//表单控件分支小类type,如input=>input-text,input-textere
+          "min": 1,
+          "max": 100,
+          "range": true,
+        },
+        "resourcefieldEmptytext": null,//placeholder的值
+        "isResourcefieldRemoved": false,//是否禁用
+        "isResourcefieldReadonly": false,//是否只读
+        "fieldWidth": 700,//表单元素部分宽度
+        "fieldHeight": null,//表单元素部分高度
+        "resourcefieldStep": 1,//step 步长
+        "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+        "resourcefieldFieldcls": null,
+        "isResourcefieldEditable": false,
+        "resourcefieldColspan": 2,
+        "items": null,//表单控件内容部分（checkbox，radio......）
+        "resourcefieldGroupname": "base-info", //分组名称
+        "isResourcefieldHidden": false,       //是否隐藏
+        "resourcefieldBindingfnList": []//事件名称集合
+      },
+    ],
+  }
+}
 
 
 export default {
@@ -2294,6 +2588,10 @@ export default {
     else if (u && query === "dynamicFormTemplate") {
       return dynamicFormTemplate;
     }
+    else if (u && query === "baseFromDemo") {
+      return baseFromDemo;
+    }
+
     else {
       return errorMap.error;
     }

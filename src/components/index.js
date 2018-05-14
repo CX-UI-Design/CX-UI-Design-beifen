@@ -27,6 +27,8 @@ import BackToTop from '../components/BackToTop/index.vue';             //返回�
 
 import FooterNav from '../components/Footer-nav/footer-nav.vue';       //底部链接导航
 
+import cardOver from '../components/card-over/card-over.vue';       //底部链接导航
+
 
 import NsDialog from '../components/others/dialog.vue';       //底部链接导航
 
@@ -51,6 +53,7 @@ const components = [
   iconSvg,
   BackToTop,
   FooterNav,
+  cardOver,
   NsDialog,
 ]
 

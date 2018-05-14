@@ -18,7 +18,7 @@
 
 
   export default {
-    name: 'icon-view',
+    name: 'install',
     components: {},
     data() {
       return {
