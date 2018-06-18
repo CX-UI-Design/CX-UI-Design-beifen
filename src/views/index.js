@@ -23,7 +23,7 @@ import '../../../cx-easy-form/dist/cx-easy-form.min.css';
 
 Vue.use(ElementUI);
 Vue.use(vueWaves);
-Vue.use(Highlight)
+Vue.use(Highlight);
 Vue.use(CxEasyForm.body, {
   stageName: 'cx',//stage name
   log: false,//show log information
@@ -34,7 +34,7 @@ Vue.use(CxEasyForm.body, {
     "appClientType": "pc",
     "Set-Cookie": Cookies.get('token'),
   },
-})
+});
 
 new Vue({
   ElementUI,
