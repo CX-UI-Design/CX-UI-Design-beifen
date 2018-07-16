@@ -9,11 +9,16 @@
 /*==========================================================================================================================*/
 export function toType(obj) {
   return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
-};
+}
 
+/**
+ * filter data is null
+ * @param o
+ * @returns {*}
+ */
 export function filterNull(o) {
   if (typeof 0 === 'Object') {
-    for (var key in o) {
+    for (let key in o) {
       if (o[key] === null) {
         delete o[key]
       }
@@ -32,6 +37,11 @@ export function filterNull(o) {
   }
 }
 
+/**
+ * data filter
+ * @param query
+ * @returns {*}
+ */
 export function dataFilter(query) {
   if (query) {
     return filterNull(query);
