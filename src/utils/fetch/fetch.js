@@ -32,7 +32,7 @@ service.interceptors.request.use(
   error => {
     Promise.reject(error);
   }
-)
+);
 
 service.interceptors.response.use(
   // response => response,
@@ -60,6 +60,6 @@ service.interceptors.response.use(
     let errorInfo = error.data.error ? error.data.error.message : error.data;
     return Promise.reject(errorInfo);
   }
-)
+);
 
 export default service;
