@@ -1,9 +1,10 @@
 import Vue from 'vue'
 
 
-import SpotWave from './canvas-back/spot-wave/spot-wave.vue';       //底部链接导航
-import GlitteringStars from './canvas-back/glittering-stars/glittering-stars.vue';       //底部链接导航
-import CanvasBack from './canvas-back/index.vue';       //底部链接导航
+import SpotWave from './canvas-back/spot-wave/spot-wave.vue';       //canvas back spot-wave
+import GlitteringStars from './canvas-back/glittering-stars/glittering-stars.vue';       //canvas back glittering-stars
+import MatrixRaindrop from './canvas-back/matrix-raindrop/matrix-raindrop';       //canvas back matrix-raindrop
+import CanvasBack from './canvas-back/index.vue';       //canvas bac
 
 
 import Code from '../components/Code/index.vue';                  //代码块
@@ -36,6 +37,7 @@ import NsDialog from '../components/others/dialog.vue';       //底部链接导�
 const components = [
   SpotWave,
   GlitteringStars,
+  MatrixRaindrop,
   CanvasBack,
 
   Code,
@@ -55,11 +57,11 @@ const components = [
   FooterNav,
   cardOver,
   NsDialog,
-]
+];
 
 //binding component
 components.map((component, index) => {
   Vue.component(component.name, component)
-})
+});
 
 
