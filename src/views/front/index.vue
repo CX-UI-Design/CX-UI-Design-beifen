@@ -2,7 +2,7 @@
 <template>
   <div class="front" id="front">
     <!--spot-wave / glittering-stars-->
-    <canvas-back type="wave" :width="innerWidth" :height="innerHeight">
+    <canvas-back type="raindrop" :width="innerWidth" :height="innerHeight">
       <!--changing-over  reg/reg/forget module-->
       <transition enter-active-class="animated zoomInLeft" leave-active-class="animated zoomOutRight">
         <router-view></router-view>
@@ -25,7 +25,7 @@
         innerWidth: window.innerWidth,
         innerHeight: window.innerHeight,
       }
-    }
+    },
   }
 </script>
 <style rel="stylesheet/scss" lang="scss">
